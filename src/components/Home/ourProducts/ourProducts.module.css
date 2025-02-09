@@ -1,0 +1,29 @@
+.OurProductHeading {
+    background-image: url('../../../assets/images/bgproducts.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.OurProductHeading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(159.1% 159.1% at 50% 54.29%, rgba(255, 255, 255, 0.95) 0%, rgba(153, 153, 153, 0.72) 100%);
+}
+
+.OurProductHeading h2 {
+    background: linear-gradient(90deg, #F7941D 0%, #046AAF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 51px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+}

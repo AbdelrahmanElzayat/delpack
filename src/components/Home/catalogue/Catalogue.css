@@ -1,0 +1,31 @@
+.Catalogue {
+    background: url('../../../assets/images/bgCatalogue.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.Catalogue::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0A6BAB;
+    background-blend-mode: color;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.Catalogue .container {
+    z-index: 2;
+    position: relative;
+}
+
+.mainHeading h2 {
+    background: linear-gradient(90deg, #F7941D 0%, #046AAF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

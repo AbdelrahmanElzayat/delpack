@@ -1,0 +1,12 @@
+.heading {
+    background: linear-gradient(90deg, #F7941D 0%, #046AAF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+}
