@@ -1,5 +1,4 @@
 import React from "react";
-import bg from "@/assets/images/bgProducts.png";
 import "./HeroProducts.css";
 const HeroProducts = () => {
   return (

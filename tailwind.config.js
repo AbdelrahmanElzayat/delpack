@@ -16,12 +16,14 @@ module.exports = {
           "linear-gradient(90deg, rgba(217, 217, 217, 0.10) 0%, rgba(115, 115, 115, 0.10) 100%);",
         "custom-gradient-img":
           "linear-gradient(to left, #FFF, rgba(255, 255, 255, 0.00))",
+        "products": "linear-gradient(0deg, #4E5864 55.04%, #0A6BAB 120.32%)",
       },
       boxShadow: {
         custom: "10px 20px 20px 0px rgba(110, 96, 69, 0.39)",
         btn: "0px 15px 12.5px 0px rgba(64, 64, 64, 0.11)",
         btnsb: "15px 15px 25px 0px rgba(112, 66, 220, 0.17)",
         video: "-30px 20px 20px 0px rgba(0, 0, 0, 0.34);",
+        filterShadow: "0px 41px 36.5px -39px rgba(0, 0, 0, 0.16)",
       },
       backdropBlur: {
         custom: "10px",
