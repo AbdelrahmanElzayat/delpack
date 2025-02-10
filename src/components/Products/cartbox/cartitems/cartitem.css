@@ -1,0 +1,23 @@
+.cartitems {
+    overflow-y: overlay;
+    /* يضمن عدم تأثر المحتوى */
+}
+
+.cartitems::-webkit-scrollbar {
+    width: 6px;
+    /* جعل التراك رفيع جدًا */
+}
+
+/* تخصيص المربع المتحرك */
+.cartitems::-webkit-scrollbar-thumb {
+    width: 14px;
+    /* العرض المطلوب للثامب */
+    height: 80px;
+    background-color: #0A6BAB;
+}
+
+/* تخصيص خلفية التراك */
+.cartitems::-webkit-scrollbar-track {
+    background: white;
+    /* جعله غير مرئي */
+}

@@ -1,3 +1,4 @@
+import CartBox from "@/components/Products/cartbox/CartBox";
 import FilterProducts from "@/components/Products/filterProducts/FilterProducts";
 import HeroProducts from "@/components/Products/heroProducts/HeroProducts";
 import ProductList from "@/components/Products/ProductList/ProductList";
@@ -8,6 +9,7 @@ const page = () => {
       <HeroProducts />
       <FilterProducts />
       <ProductList />
+      <CartBox />
     </div>
   );
 };
