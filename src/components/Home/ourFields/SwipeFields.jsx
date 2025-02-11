@@ -16,11 +16,11 @@ import Image from "next/image";
 
 const SwipeFields = () => {
   return (
-    <div className="w-full max-h-[400px] flex flex-col justify-center items-center gap-4">
+    <div className="w-[calc(100%-80px)] max-h-[400px] flex justify-center items-center gap-4">
       <div className="relative w-full max-w-[500px]">
         {/* Custom Navigation Buttons */}
         <button
-          className="swiper-button-custom-prev absolute top-1/2 left-[-50px] transform -translate-y-1/2 z-10"
+          className="hidden md:block swiper-button-custom-prev absolute top-1/2 left-[-50px] transform -translate-y-1/2 z-10"
           aria-label="Previous Slide"
         >
           <svg
@@ -40,7 +40,7 @@ const SwipeFields = () => {
           </svg>
         </button>
         <button
-          className="swiper-button-custom-next absolute top-1/2 right-[-50px] transform -translate-y-1/2 z-10"
+          className="hidden md:block swiper-button-custom-next absolute top-1/2 right-[-50px] transform -translate-y-1/2 z-10"
           aria-label="Next Slide"
         >
           <svg

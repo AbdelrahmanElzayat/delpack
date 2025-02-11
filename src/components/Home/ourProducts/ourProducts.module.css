@@ -4,6 +4,12 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
 .OurProductHeading::before {
@@ -21,9 +27,26 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 51px;
-    font-style: normal;
+    font-size: clamp(18px, 5vw, 51px);
+    /* يجعل العنوان متجاوب */
     font-weight: 900;
-    line-height: normal;
     text-transform: uppercase;
+}
+
+/* تعديل الفقرة لتكون متجاوبة */
+.OurProductHeading p {
+    font-size: clamp(14px, 2vw, 18px);
+    max-width: 90%;
+}
+
+/* تصغير السهم في الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .OurProductHeading {
+        min-height: 300px;
+        padding: 15px;
+    }
+    .OurProductHeading img {
+        width: 40px;
+        /* تقليل حجم السهم */
+    }
 }

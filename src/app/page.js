@@ -23,7 +23,7 @@ export default function Home() {
       <Faqs />
       <VideoHome />
       {/* Sections after the video */}
-      <div className="relative z-20 bg-white">
+      <div className="relative z-50 bg-white">
         <WeHere />
         <MapSection />
         <Catalogue />

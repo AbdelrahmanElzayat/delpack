@@ -8,18 +8,16 @@ import Image from "next/image";
 import s1 from "@/assets/images/s1.png";
 import s2 from "@/assets/images/s2.png";
 import arrowright from "@/assets/icons/arrowright.svg";
-// تفعيل الـ Autoplay
 import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
 
 const Hero = () => {
   const slides = [
     { type: "image", src: s1 },
-    // { type: "video", src: "/path/to/video1.mp4" },
     { type: "image", src: s2 },
   ];
 
   return (
-    <div className="h-[calc(100vh+150px)]">
+    <div className="h-[calc(50vh+150px)] md:h-[calc(100vh+150px)] relative">
       <Swiper
         loop={true}
         autoplay={{
@@ -28,16 +26,15 @@ const Hero = () => {
         }}
         className="h-full"
         modules={[Navigation, Scrollbar, Autoplay, A11y]}
-        // navigation
         navigation={{
           nextEl: ".swiper-button-next-custom",
           prevEl: ".swiper-button-prev-custom",
         }}
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="h-full">
+          <SwiperSlide key={index} className="h-full relative">
             {slide.type === "image" ? (
-              <div className="">
+              <div className="relative w-full h-full">
                 <Image
                   src={slide.src}
                   alt={`Slide ${index}`}
@@ -60,11 +57,19 @@ const Hero = () => {
         ))}
       </Swiper>
       {/* Custom Navigation Buttons */}
-      <button className="swiper-button-prev-custom absolute left-0 top-1/2 transform -translate-y-1/2 z-10 backdrop-blur-custom text-white py-10 px-3 border-r border-t border-b border-white rounded-[0_40px_40px_0] shadow-md">
-        <Image src={arrowright} alt="next" className="rotate-180" />
+      <button className="swiper-button-prev-custom absolute left-0 top-1/2 transform -translate-y-1/2 z-10 backdrop-blur-custom text-white py-6 px-2 md:py-10 md:px-3 border-r border-t border-b border-white rounded-[0_40px_40px_0] shadow-md">
+        <Image
+          src={arrowright}
+          alt="prev"
+          className="rotate-180 w-6 h-6 md:w-auto md:h-auto"
+        />
       </button>
-      <button className="swiper-button-next-custom absolute right-0 top-1/2 transform -translate-y-1/2 z-10 backdrop-blur-custom text-white py-10 px-3 border-l border-t border-b border-white rounded-[40px_0_0_40px] shadow-md">
-        <Image src={arrowright} alt="next" />
+      <button className="swiper-button-next-custom absolute right-0 top-1/2 transform -translate-y-1/2 z-10 backdrop-blur-custom text-white py-6 px-2 md:py-10 md:px-3 border-l border-t border-b border-white rounded-[40px_0_0_40px] shadow-md">
+        <Image
+          src={arrowright}
+          alt="next"
+          className="w-6 h-6 md:w-auto md:h-auto"
+        />
       </button>
     </div>
   );

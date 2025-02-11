@@ -14,13 +14,13 @@ const ProductList = () => {
       </div>
       <div className="pagination flex justify-center items-center gap-9">
         <button>
-          <Image src={left} />
+          <Image src={left} alt="left" />
         </button>
         <span className="bg-[#D9D9D9] px-3 flex items-center justify-center font-mono">
           1
         </span>
         <button>
-          <Image src={right} />
+          <Image src={right} alt="right"/>
         </button>
       </div>
     </div>

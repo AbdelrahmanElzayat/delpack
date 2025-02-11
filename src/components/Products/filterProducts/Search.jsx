@@ -18,7 +18,7 @@ const Search = ({ values, handleChange }) => {
       <h2 className="text-[#0A6BAB] text-xl font-bold capitalize text-nowrap">
         SEARCH BY
       </h2>
-      <Form className="w-full grid grid-cols-6 gap-7">
+      {/* <Form className="w-full grid grid-cols-6 gap-7"> */}
         {["code", "diameter", "height", "neck", "volume", "material"].map(
           (name) => (
             <div key={name} className="flex flex-col items-start gap-2">
@@ -40,7 +40,7 @@ const Search = ({ values, handleChange }) => {
             </div>
           )
         )}
-      </Form>
+      {/* </Form> */}
     </div>
   );
 };

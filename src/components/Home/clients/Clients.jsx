@@ -9,18 +9,19 @@ import c2 from "@/assets/images/c2.png";
 const Clients = () => {
   const logos = [c1, c2, c1, c2, c1, c2, c1, c2];
   return (
-    <section className="py-6 mt-40 lg:py-20">
+    <section className="py-6 lg:mt-31 xl:mt-40 lg:py-20">
       <div className="container ">
         <div className="mainHeading flex flex-col justify-center items-center">
-          <h2 className="text-[51px] font-extrabold uppercase text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[51px] py-3 font-extrabold uppercase text-center">
             OUR CLIENTS
           </h2>
-          <p className="text-2xl text-center text-[#656565] font-light">
+          <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xltext-center text-[#656565] font-light text-center">
             Trusted by industry leaders and innovators worldwide.
           </p>
         </div>
         <Swiper
           draggable={true}
+          spaceBetween={10}
           autoplay={{
             delay: 0, // عشان يتحرك من غير توقف
             disableOnInteraction: false, // يكمل الحركة حتى لو حصل تفاعل

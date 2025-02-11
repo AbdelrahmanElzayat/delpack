@@ -3,8 +3,11 @@ import React from "react";
 
 const MapSection = () => {
   return (
-    <section className="relative w-full h-[500px]">
-      <Link href={"/"} className="pt-5 pb-4 px-12 rounded-[80px] bg-[#046AAF] text-white text-2xl font-light text-center absolute -top-10 left-1/2 -translate-x-1/2">
+    <section className="relative w-full h-[300px] md:h-[500px]">
+      <Link
+        href="/contact"
+        className="pt-3 sm:pt-5 pb-3 sm:pb-4 px-4 sm:px-12 rounded-full bg-[#046AAF] text-white text-sm sm:text-base md:text-lg lg:text-2xl font-light text-center absolute -top-7 -md:top-10 left-1/2 -translate-x-1/2 shadow-lg hover:bg-[#035799] transition"
+      >
         CONTACT US
       </Link>
       <iframe

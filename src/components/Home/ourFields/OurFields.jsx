@@ -1,36 +1,48 @@
+
+
 import React from "react";
 import SwipeFields from "./SwipeFields";
 
 const OurFields = () => {
+  const fields = [
+    "Edible oils",
+    "Detergents",
+    "Cosmetics",
+    "Pharmaceuticals",
+    "Chemicals",
+    "Beverages",
+    "Food containers",
+    "Industrial lubricants",
+    "Agricultural products",
+    "Personal care products",
+    "Household products",
+  ];
+
   return (
-    <div>
+    <div className="py-12">
       <div className="container">
-        <div className="flex justify-between items-start gap-4">
-          <div className="fieldsCards w-[500px]">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
+          {/* Swiper Section */}
+          <div className="fieldsCards w-full md:w-[500px] max-w-full flex justify-center">
             <SwipeFields />
           </div>
-          <div className="fieldsContent basis-1/2 flex flex-col gap-4">
-            <h3 className="text-3xl font-extrabold text-[#0A6BAB]">
+
+          {/* Content Section */}
+          <div className="fieldsContent basis-1/2 flex flex-col mt-3 md:mt-0 gap-3 md:gap-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0A6BAB]">
               Our Fields
             </h3>
-            <p className="text-[#656565] text-xl font-light">
+            <p className="text-[#656565] text-sm sm:text-base md:text-lg lg:text-xl font-light">
               Delta Misr Plastic Factories Delpak manufactures plastic
               containers (coloured, transparent and opaque) for many consumer
-              goods and industrial products, such as
+              goods and industrial products, such as:
             </p>
-            <div className="overflow-y-auto h-[200px]">
-              <ul className="grid grid-cols-2 w-full text-[#656565] text-xl font-light list-disc list-inside">
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
-                <li>Edible oils</li>
+
+            <div className="max-h-[200px] overflow-y-auto">
+              <ul className="grid grid-cols-2 gap-x-4 text-[#656565] text-sm ms:text-lg lg:text-xl font-light list-disc list-inside">
+                {fields.map((field, index) => (
+                  <li key={index}>{field}</li>
+                ))}
               </ul>
             </div>
           </div>
