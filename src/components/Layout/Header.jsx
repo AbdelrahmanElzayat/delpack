@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/logo.png";
 import eg from "@/assets/icons/aricon.svg";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,7 +70,7 @@ const Header = () => {
       href: "/contact-us",
     },
   ];
-
+  
   return (
     <header
       className="fixed left-5 right-5 border border-white bg-header-gradient backdrop-blur-custom z-[1000]"
@@ -86,7 +86,7 @@ const Header = () => {
             />
           </div>
           <nav className="hidden lg:flex">
-            <ul className="flex items-center justify-center h-[70px] w-full gap-3">
+            <ul className="flex items-center justify-center h-[70px] w-full">
               {links?.map((item, index) => {
                 const cleanHash = hash?.replace("#", "").replace("/", "");
                 const cleanHref = item?.href.replace("/#", "").replace("/", "");
