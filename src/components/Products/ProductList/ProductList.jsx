@@ -5,8 +5,8 @@ import right from "@/assets/icons/rightpagination.svg";
 import Image from "next/image";
 const ProductList = () => {
   return (
-    <div className="pb-[200px]">
-      <div className="grid grid-cols-3 pb-40">
+    <div className="pb-[50px] md:pb-[100px] lg:pb-[150px] xl:pb-[200px]">
+      <div className="grid grid-cols-2 md:grid-cols-3 pb-16 md:pb-10 lg:pb-20 xl:pb-40">
         <ProductCard />
         <ProductCard />
         <ProductCard />
@@ -20,7 +20,7 @@ const ProductList = () => {
           1
         </span>
         <button>
-          <Image src={right} alt="right"/>
+          <Image src={right} alt="right" />
         </button>
       </div>
     </div>

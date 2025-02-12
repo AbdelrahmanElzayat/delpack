@@ -70,7 +70,7 @@ const Header = () => {
       href: "/contact-us",
     },
   ];
-  
+
   return (
     <header
       className="fixed left-5 right-5 border border-white bg-header-gradient backdrop-blur-custom z-[1000]"
@@ -119,7 +119,9 @@ const Header = () => {
               })}
             </ul>
           </nav>
-          <Image src={eg} alt="changelang" className="w-6 sm:w-8" />
+          <button className="cursor-pointer">
+            <Image src={eg} alt="changelang" className="w-6 sm:w-8" />
+          </button>
 
           {/* *********************** */}
           <button
