@@ -91,10 +91,11 @@ const Header = () => {
                 const cleanHash = hash?.replace("#", "").replace("/", "");
                 const cleanHref = item?.href.replace("/#", "").replace("/", "");
                 const cleanPathname = pathname.replace("/", "");
-
                 const isActive = hash
                   ? cleanHash === cleanHref
-                  : cleanPathname === cleanHref;
+                  : cleanPathname === cleanHref ||
+                    (cleanHref.includes("news") &&
+                      cleanPathname.includes("news"));
 
                 return (
                   <li
