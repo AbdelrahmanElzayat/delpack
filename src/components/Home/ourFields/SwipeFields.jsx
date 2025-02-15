@@ -8,13 +8,9 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-import f1 from "@/assets/images/f1.png";
-import f2 from "@/assets/images/f2.png";
-import f3 from "@/assets/images/f3.png";
 import Image from "next/image";
 
-const SwipeFields = () => {
+const SwipeFields = ({ slides }) => {
   return (
     <div className="w-[calc(100%-80px)] max-h-[400px] flex justify-center items-center gap-4">
       <div className="relative w-full max-w-[500px]">
@@ -71,27 +67,21 @@ const SwipeFields = () => {
           pagination={{ clickable: true }}
           className="w-full max-w-[500px] h-full max-h-[350px]"
         >
-          <SwiperSlide className="flex items-center justify-center text-white text-2xl font-bold rounded-3xl overflow-hidden">
-            <Image
-              src={f1}
-              alt="Image 1"
-              className="w-full h-full object-cover"
-            />
-          </SwiperSlide>
-          <SwiperSlide className="flex items-center justify-center bg-red-500 text-white text-2xl font-bold rounded-3xl overflow-hidden">
-            <Image
-              src={f2}
-              alt="Image 2"
-              className="w-full h-full object-cover"
-            />
-          </SwiperSlide>
-          <SwiperSlide className="flex items-center justify-center bg-green-500 text-white text-2xl font-bold rounded-3xl overflow-hidden">
-            <Image
-              src={f3}
-              alt="Image 3"
-              className="w-full h-full object-cover"
-            />
-          </SwiperSlide>
+          {slides?.map((item) => (
+            <SwiperSlide
+              key={item?.id}
+              className="flex items-center justify-center text-white text-2xl font-bold rounded-3xl overflow-hidden"
+            >
+              <Image
+                src={item?.image_path}
+                width={500}
+                height={500}
+                objectFit="cover"
+                alt="Image 1"
+                className="w-full h-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

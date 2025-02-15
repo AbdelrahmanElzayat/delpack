@@ -5,23 +5,16 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import Image from "next/image";
-import s1 from "@/assets/images/s1.png";
-import s2 from "@/assets/images/s2.png";
 import arrowright from "@/assets/icons/arrowright.svg";
 import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
 
-const Hero = () => {
-  const slides = [
-    { type: "image", src: s1 },
-    { type: "image", src: s2 },
-  ];
-
+const Hero = ({ banners }) => {
   return (
     <div className="h-[calc(50vh+150px)] md:h-[calc(100vh+150px)] relative">
       <Swiper
         loop={true}
         autoplay={{
-          delay: 3000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         className="h-full"
@@ -31,13 +24,13 @@ const Hero = () => {
           prevEl: ".swiper-button-prev-custom",
         }}
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="h-full relative">
+        {banners?.map((slide) => (
+          <SwiperSlide key={slide?.id} className="h-full relative">
             {slide.type === "image" ? (
               <div className="relative w-full h-full">
                 <Image
-                  src={slide.src}
-                  alt={`Slide ${index}`}
+                  src={slide?.image_path}
+                  alt={`Slide ${slide.id}`}
                   layout="fill"
                   objectFit="cover"
                   className="w-full h-full"
@@ -46,7 +39,7 @@ const Hero = () => {
               </div>
             ) : (
               <video
-                src={slide.src}
+                src={slide.image_path}
                 autoPlay
                 loop
                 muted

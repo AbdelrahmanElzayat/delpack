@@ -1,30 +1,14 @@
-
-
 import React from "react";
 import SwipeFields from "./SwipeFields";
 
-const OurFields = () => {
-  const fields = [
-    "Edible oils",
-    "Detergents",
-    "Cosmetics",
-    "Pharmaceuticals",
-    "Chemicals",
-    "Beverages",
-    "Food containers",
-    "Industrial lubricants",
-    "Agricultural products",
-    "Personal care products",
-    "Household products",
-  ];
-
+const OurFields = ({ description, fields, slides }) => {
   return (
     <div className="py-12">
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
           {/* Swiper Section */}
           <div className="fieldsCards w-full md:w-[500px] max-w-full flex justify-center">
-            <SwipeFields />
+            <SwipeFields slides={slides} />
           </div>
 
           {/* Content Section */}
@@ -33,9 +17,7 @@ const OurFields = () => {
               Our Fields
             </h3>
             <p className="text-[#656565] text-sm sm:text-base md:text-lg lg:text-xl font-light">
-              Delta Misr Plastic Factories Delpak manufactures plastic
-              containers (coloured, transparent and opaque) for many consumer
-              goods and industrial products, such as:
+              {description}
             </p>
 
             <div className="max-h-[200px] overflow-y-auto">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import style from "./ourProducts.module.css";
 import Image from "next/image";
@@ -11,7 +12,11 @@ const OurProductHeading = () => {
         <div className="content flex flex-col items-center justify-center gap-5 relative z-50 text-center">
           <h2>OUR PRODUCTs</h2>
           <p>Innovative. Reliable. Designed to meet your every need.</p>
-          <Image src={arrowdown} alt="explore products" className="animate-bounce mt-5 cursor-pointer max-h-[60px]" />
+          <Image
+            src={arrowdown}
+            alt="explore products"
+            className="animate-bounce mt-5 cursor-pointer max-h-[60px]"
+          />
         </div>
       </div>
     </div>

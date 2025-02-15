@@ -1,7 +1,7 @@
 import React from "react";
 import BlogSwiper from "./BlogSwiper";
 import "./Blog.css";
-const Blogs = () => {
+const Blogs = ({ news }) => {
   return (
     <section className="Blogs relative bg-white lg:h-[700px] py-10" id="news">
       <div className="absolute top-0 left-0 w-full h-1/2 bg-[#D9D9D9] z-10"></div>
@@ -14,7 +14,7 @@ const Blogs = () => {
             Get more knowledge about us and our industry
           </p>
         </div>
-        <BlogSwiper />
+        <BlogSwiper news={news} />
       </div>
     </section>
   );

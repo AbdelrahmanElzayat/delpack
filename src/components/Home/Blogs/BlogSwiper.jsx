@@ -104,7 +104,6 @@
 
 // export default BlogSwiper;
 
-
 import React, { useState, useRef } from "react";
 import BlogCard from "./BlogCard";
 import BlogTest from "@/assets/images/blogEx.jpg";
@@ -117,16 +116,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 
-const BlogSwiper = () => {
+const BlogSwiper = ({ news }) => {
   const [isAutoplay, setIsAutoplay] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
-  const blogs = [
-    { id: 1, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
-    { id: 2, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
-    { id: 3, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
-  ];
+  // const blogs = [
+  //   { id: 1, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
+  //   { id: 2, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
+  //   { id: 3, image: BlogTest, title: "NEW MACHINES NEW QUALITIES" },
+  // ];
 
   const toggleAutoplay = () => {
     if (swiperRef.current) {
@@ -151,10 +150,10 @@ const BlogSwiper = () => {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
-        {blogs.map((item) => (
+        {news.map((item) => (
           <SwiperSlide key={item.id}>
             <div className="w-full flex justify-center">
-              <BlogCard title={item.title} image={item.image} />
+              <BlogCard title={item.title} image={item.image} id={item?.id} />
             </div>
           </SwiperSlide>
         ))}
@@ -166,7 +165,7 @@ const BlogSwiper = () => {
         <div className="relative flex items-center justify-between h-full px-5 sm:px-10">
           {/* الباجينيشن */}
           <div className="flex items-center space-x-2">
-            {blogs.map((_, index) => (
+            {news.map((_, index) => (
               <div
                 key={index}
                 className={`${

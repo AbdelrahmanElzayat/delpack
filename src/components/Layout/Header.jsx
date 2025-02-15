@@ -78,13 +78,13 @@ const Header = () => {
     >
       <div className="container">
         <div className="flex justify-between items-center gap-3 py-4 lg:py-0">
-          <div className="h-full flex-1 lg:flex-none">
+          <Link href={"/"} className="h-full flex-1 lg:flex-none">
             <Image
               src={logo}
               alt="logo"
               className="object-contain w-32 sm:w-40"
             />
-          </div>
+          </Link>
           <nav className="hidden lg:flex">
             <ul className="flex items-center justify-center h-[70px] w-full">
               {links?.map((item, index) => {

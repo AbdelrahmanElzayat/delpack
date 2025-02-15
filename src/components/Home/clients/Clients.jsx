@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
 import { Autoplay, FreeMode } from "swiper/modules"; // استيراد الـ Autoplay
 import Image from "next/image";
-import c1 from "@/assets/images/c1.png";
-import c2 from "@/assets/images/c2.png";
+import { useFetchClientsQuery } from "@/rtk/slices/clients";
 const Clients = () => {
-  const logos = [c1, c2, c1, c2, c1, c2, c1, c2];
+  const { data: clients } = useFetchClientsQuery("en");
+
   return (
     <section className="py-6 lg:mt-31 xl:mt-40 lg:py-20">
       <div className="container ">
@@ -33,11 +33,11 @@ const Clients = () => {
           modules={[Autoplay, FreeMode]}
           breakpoints={{
             300: {
-              slidesPerView: 4, // عدد اللوجوهات للشاشات الصغيرة جداً (موبايل)
+              slidesPerView: 3, // عدد اللوجوهات للشاشات الصغيرة جداً (موبايل)
               spaceBetween: 10,
             },
             480: {
-              slidesPerView: 4, // للشاشات الموبايل المتوسطة
+              slidesPerView: 3, // للشاشات الموبايل المتوسطة
               spaceBetween: 10,
             },
             768: {
@@ -52,22 +52,24 @@ const Clients = () => {
           className="mt-8 lg:mt-20"
           dir="ltr"
         >
-          {logos?.map((logo, i) =>
+          {clients?.data?.map((logo) =>
             logo ? (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={logo?.id}>
                 <div
-                  className="border border-[#CFCFCF] md:w-full px-7 py-4 rounded-2xl flex justify-center"
+                  className="border border-[#CFCFCF] md:w-full h-[100px] sm:h-[135px] px-7 py-4 rounded-2xl flex justify-center"
                   style={{
                     boxShadow:
                       "0px 3.458px 11.151px -0.864px rgba(0, 0, 0, 0.13)",
                   }}
                 >
                   <Image
-                    src={logo}
-                    alt={`brand-logo-${i}`}
+                    src={logo?.image_path}
+                    width={100}
+                    height={100}
+                    alt={`brand-logo-${logo?.id}`}
                     style={{
                       width: "100%",
-                      maxHeight: "100px",
+                      maxHeight: "100%",
                       objectFit: "contain",
                     }}
                   />

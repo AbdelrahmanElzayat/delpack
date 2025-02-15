@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./about.module.css";
 
-const AboutUs = () => {
+const AboutUs = ({ description }) => {
   return (
     <div className="py-10 md:px-0" id="about-us">
       <div className="container">
@@ -17,16 +17,7 @@ const AboutUs = () => {
         </div>
         <div className="description mt-4">
           <p className="text-center text-sm sm:text-base md:text-xl font-light text-[#656565] leading-6 sm:leading-7 md:leading-8">
-            The main center, administration and factories are located in Gharbia
-            Governorate. The company's area is about twenty-five thousand square
-            meters equipped with the best production lines and the best
-            capabilities consisting of injection and blowing machines to produce
-            plastic containers and container covers from PP, PE, PET materials.
-            The company does not accept the application of the recycling system
-            in its products and maintains the production of a pure and healthy
-            product with high-purity raw materials and the highest international
-            quality specifications. The company also holds the ISO 9001 - 2015
-            and ISO 22000 - 2018 certificates.
+            {description}
           </p>
         </div>
       </div>

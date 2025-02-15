@@ -1,31 +1,60 @@
-import React from "react";
+"use client";
+import { cartActions } from "@/rtk/slices/cartslice";
+import { useAppDispatch, useAppSelector } from "@/rtk/store";
+import React, { useState, useCallback } from "react";
+import toast from "react-hot-toast";
 
-const AddToCart = () => {
+const AddToCart = ({ product, color }) => {
+  const [qty, setQty] = useState(1);
+  const dispatch = useAppDispatch();
+
+  // تحديث الكمية بطريقة صحيحة
+  const handleQtyChange = useCallback((type) => {
+    setQty((prevQty) => {
+      if (type === "increase") return Math.min(prevQty + 1, 99);
+      if (type === "decrease") return Math.max(prevQty - 1, 1);
+      return prevQty;
+    });
+  }, []);
+
+  // إضافة المنتج إلى السلة
+  const addToCart = useCallback(() => {
+    if (!color) return toast.error("please select color");
+    dispatch(cartActions.addItem({ product, color, qty }));
+    toast.success("Product Added Successfully");
+  }, [dispatch, product, color, qty]);
+
   return (
-    <div className="AddToCart flex items-center flex-col md:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
-      {/* زرار التحكم في الكمية */}
-      <div className="flex items-center gap-1 sm:gap-2">
+    <div className="flex flex-col md:flex-row  gap-3 sm:gap-4 mt-4 sm:mt-6">
+      {/* زر التحكم في الكمية */}
+      <div className="flex items-center gap-2">
         <button
-          className="w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-sm text-[#6E6D6D] font-bold 
-          flex items-center justify-center hover:bg-gray-200 transition"
+          className="w-7 h-7 bg-white rounded-sm text-[#6E6D6D] font-bold flex items-center justify-center 
+          hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => handleQtyChange("decrease")}
+          disabled={qty === 1}
         >
           -
         </button>
-        <span className="bg-[#D9D9D9] px-3 py-1 flex items-center justify-center font-mono text-sm sm:text-base">
-          1
+        <span className="bg-[#D9D9D9] px-4 py-1 flex items-center justify-center font-mono text-sm sm:text-base">
+          {qty}
         </span>
         <button
-          className="w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-sm text-[#6E6D6D] font-bold 
-          flex items-center justify-center hover:bg-gray-200 transition"
+          className="w-7 h-7 bg-white rounded-sm text-[#6E6D6D] font-bold flex items-center justify-center 
+          hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => handleQtyChange("increase")}
+          disabled={qty >= 99}
         >
           +
         </button>
       </div>
 
-      {/* زرار الإضافة إلى السلة */}
+      {/* زر الإضافة إلى السلة */}
       <button
-        className="text-[#0A6BAB] text-xs sm:text-sm font-[500] w-fit py-1 sm:py-2 px-3 rounded-lg 
-        bg-white shadow-shadowCrt hover:bg-gray-100 transition"
+        className="text-[#0A6BAB] text-xs sm:text-sm font-medium py-2 px-4 rounded-lg 
+        bg-white shadow-md hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+        onClick={addToCart}
+        disabled={!color}
       >
         Add to Cart
       </button>

@@ -11,23 +11,35 @@ import OurProductHeading from "@/components/Home/ourProducts/OurProductHeading";
 import SwiperProducts from "@/components/Home/ourProducts/SwiperProducts";
 import VideoHome from "@/components/Home/video/VideoHome";
 import WeHere from "@/components/Home/wehere/WeHere";
+import { fetchAbout, fetchBanners, fetchHomeMedia, fetchNews } from "@/lib/api";
+import { cookies } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+  const lang = cookies().get("lang")?.value || "en";
+  const { banners } = await fetchBanners();
+  const { media } = await fetchHomeMedia();
+  const { about } = await fetchAbout(lang);
+  const { news } = await fetchNews(lang);
+
   return (
     <div className="">
-      <Hero />
+      <Hero banners={banners} />
       <OurProductHeading />
       <SwiperProducts />
-      <AboutUs />
-      <OurFields />
+      <AboutUs description={about?.about?.title} />
+      <OurFields
+        description={about?.about?.our_field}
+        fields={about?.about?.fields}
+        slides={about?.sliders_abouts}
+      />
       <Faqs />
-      <VideoHome />
+      <VideoHome media={media} />
       {/* Sections after the video */}
       <div className="relative z-50 bg-white">
         <WeHere />
         <MapSection />
         <Catalogue />
-        <Blogs />
+        <Blogs news={news} />
         <Clients />
         <AnyQuestion />
       </div>
