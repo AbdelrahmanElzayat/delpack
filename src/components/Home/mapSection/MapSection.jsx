@@ -5,7 +5,7 @@ const MapSection = () => {
   return (
     <section className="relative w-full h-[300px] md:h-[500px]">
       <Link
-        href="/contact"
+        href="/contact-us"
         className="pt-3 sm:pt-5 pb-3 sm:pb-4 px-4 sm:px-12 rounded-full bg-[#046AAF] text-white text-sm sm:text-base md:text-lg lg:text-2xl font-light text-center absolute -top-7 -md:top-10 left-1/2 -translate-x-1/2 shadow-lg hover:bg-[#035799] transition"
       >
         CONTACT US

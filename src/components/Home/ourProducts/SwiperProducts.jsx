@@ -9,83 +9,9 @@ import Image from "next/image";
 import productEx from "@/assets/images/productEx.png";
 import rightProduct from "@/assets/icons/rightProduct.svg";
 import leftProduct from "@/assets/icons/leftProduct.svg";
+import Link from "next/link";
 
-const ProductSwiper = () => {
-  const products = [
-    {
-      id: 1,
-      image: productEx,
-      title: "Code B 0111",
-      details: [
-        "Diameter................75mm",
-        "Height....................265mm",
-        "Neck.......................29mm",
-        "Volume....................900ml",
-        "Material..................PET",
-      ],
-    },
-    {
-      id: 2,
-      image: productEx,
-      title: "Code B 0112",
-      details: [
-        "Diameter................80mm",
-        "Height....................270mm",
-        "Neck.......................30mm",
-        "Volume....................950ml",
-        "Material..................PET",
-      ],
-    },
-    {
-      id: 3,
-      image: productEx,
-      title: "Code B 0113",
-      details: [
-        "Diameter................85mm",
-        "Height....................280mm",
-        "Neck.......................32mm",
-        "Volume....................1000ml",
-        "Material..................PET",
-      ],
-    },
-    {
-      id: 4,
-      image: productEx,
-      title: "Code B 0114",
-      details: [
-        "Diameter................85mm",
-        "Height....................280mm",
-        "Neck.......................32mm",
-        "Volume....................1000ml",
-        "Material..................PET",
-      ],
-    },
-    {
-      id: 5,
-      image: productEx,
-      title: "Code B 0115",
-      details: [
-        "Diameter................85mm",
-        "Height....................280mm",
-        "Neck.......................32mm",
-        "Volume....................1000ml",
-        "Material..................PET",
-      ],
-    },
-    {
-      id: 6,
-      image: productEx,
-      title: "Code B 0116",
-      details: [
-        "Diameter................85mm",
-        "Height....................280mm",
-        "Neck.......................32mm",
-        "Volume....................1000ml",
-        "Material..................PET",
-      ],
-    },
-    // Add more products as needed
-  ];
+const ProductSwiper = ({ products }) => {
   const swiperRef = useRef(null);
   const [activeProduct, setActiveProduct] = useState(products[0]);
   const handleSlideChange = (swiper) => {
@@ -93,27 +19,29 @@ const ProductSwiper = () => {
   };
 
   return (
-    <div className="products relative bg-products-gradient py-8 pl-12 pr-12 overflow-hidden flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between">
+    <div className="products relative z-50 bg-products-gradient py-10 pl-12 pr-12 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between">
       {/* الجانب الأيسر: المنتج النشط */}
       <div className="leftSide relative mb-8 lg:mb-0">
         <div className="activeProductImg">
           <div className="mainProduct">
             <Image
               src={activeProduct.image}
-              alt={activeProduct.title}
-              className="max-w-[300px] lg:max-w-[400px] max-h-[50vh] lg:max-h-[90vh] object-contain mx-auto"
+              alt={activeProduct.code}
+              width={500}
+              height={400}
+              className="max-w-[300px] lg:max-w-[400px] h-[50vh] lg:h-[90vh] object-contain mx-auto"
             />
           </div>
         </div>
         {/* أزرار التنقل حول الصورة */}
         <button
-          className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 "
+          className="absolute -left-4 md:-left-6 top-1/2 transform -translate-y-1/2 "
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <Image src={leftProduct} alt="prev" />
         </button>
         <button
-          className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 "
+          className="absolute -right-4 md:-right-6 top-1/2 transform -translate-y-1/2 "
           onClick={() => swiperRef.current?.slideNext()}
         >
           <Image src={rightProduct} alt="next" />
@@ -121,21 +49,28 @@ const ProductSwiper = () => {
       </div>
 
       {/* الجانب الأيمن: معلومات المنتج والسوايبر */}
-      <div className="rightSide flex flex-col justify-center gap-8 text-center lg:text-left">
+      <div className="rightSide flex flex-col justify-center gap-8 text-center lg:text-left overflow-hidden">
         {/* بيانات المنتج النشط */}
         <div>
-          <div className="productData flex flex-col items-center gap-3 max-w-[350px] mx-auto lg:mx-0">
+          <div className="productData flex flex-col gap-3 w-full mx-auto lg:mx-0">
             <h3 className="w-fit text-center border-b-4 border-b-[#F7941D] text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-extrabold">
-              {activeProduct.title}
+              {activeProduct.code}
             </h3>
-            <p className="max-w-[300px] text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
+            {/* <p className="max-w-[300px] text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
               {activeProduct.details.map((detail, index) => (
                 <span key={index}>
                   {detail}
                   <br />
                 </span>
               ))}
-            </p>
+            </p> */}
+            <ul className="w-full text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
+              <li>Diameter..................{activeProduct?.diameter}mm</li>
+              <li>Height..................{activeProduct?.height}mm</li>
+              <li>Neck..................{activeProduct?.neck}mm</li>
+              <li>Volume..................{activeProduct?.volume}ml</li>
+              <li>Material..................{activeProduct.material}</li>
+            </ul>
           </div>
         </div>
 
@@ -152,8 +87,11 @@ const ProductSwiper = () => {
               {products.map((product) => (
                 <SwiperSlide key={product.id}>
                   <Image
+                    // src={productEx}
                     src={product.image}
                     alt={product.title}
+                    width={500}
+                    height={500}
                     className="max-w-[100px] max-h-[260px] object-contain"
                   />
                 </SwiperSlide>
@@ -162,6 +100,13 @@ const ProductSwiper = () => {
           </div>
         </div>
       </div>
+
+      <Link
+        href={"/products"}
+        className="bg-[#0A6BAB] rounded-2xl px-4 md:px-6 lg:px-8 xl:px-10 py-2 lg:py-3 xl:py-4  absolute left-1/2 -translate-x-1/2 z-[10000000] -bottom-4 md:-bottom-6 lg:-bottom-8 xl:-bottom-10 flex justify-center items-center text-white text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-[30px] font-bold "
+      >
+        explore more
+      </Link>
     </div>
   );
 };

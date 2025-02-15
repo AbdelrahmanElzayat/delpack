@@ -63,7 +63,7 @@ const ContactForm = () => {
               onSubmit={handleSubmit}
             >
               {({ isSubmitting }) => (
-                <Form className="w-full flex flex-col items-start gap-10 mt-8">
+                <Form className="w-full flex flex-col items-start gap-6 mt-8">
                   {[
                     { name: "name", placeholder: "Name", icon: nameIcon },
                     { name: "email", placeholder: "Email", icon: emailIcon },

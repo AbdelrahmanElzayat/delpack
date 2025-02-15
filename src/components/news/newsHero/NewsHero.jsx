@@ -1,10 +1,12 @@
 import React from "react";
 import "./newsHero.css";
-const NewsHero = () => {
-  return (
-    <div className="heroProducts">
+const NewsHero = ({ image }) => {
 
-    </div>
+  return (
+    <div
+      className="heroProducts"
+      style={{ backgroundImage: `url(${image})` }}
+    ></div>
   );
 };
 

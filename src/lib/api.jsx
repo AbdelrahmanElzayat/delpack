@@ -79,3 +79,22 @@ export const fetchNews = async (lang = "en") => {
     news: data.data,
   };
 };
+export const fetchNewDetails = async ({ lang = "en", id }) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/new/${id}`,
+    {
+      cache: "no-store", // 🛠 تحديث البيانات دائماً
+      headers: {
+        "Content-Type": "application/json",
+        lang, // 🛠 تصحيح إرسال اللغة
+      },
+    }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch news");
+
+  const data = await res.json();
+  return {
+    blog: data.data, // 🛠 غيرنا `new` إلى `news`
+  };
+};

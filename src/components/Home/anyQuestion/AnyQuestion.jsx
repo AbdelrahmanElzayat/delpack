@@ -9,7 +9,7 @@ const AnyQuestion = () => {
           Have any questions?
         </h2>
         <Link
-          href={"/"}
+          href={"/contact-us"}
           className="bg-[#F7941D] rounded-[84px] pt-3 sm:pt-4 pb-2 sm:pb-3 px-10 sm:px-24 text-white font-light text-lg sm:text-2xl text-center w-fit block m-auto"
         >
           Contact us
