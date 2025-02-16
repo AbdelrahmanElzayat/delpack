@@ -11,7 +11,13 @@ import OurProductHeading from "@/components/Home/ourProducts/OurProductHeading";
 import SwiperProducts from "@/components/Home/ourProducts/SwiperProducts";
 import VideoHome from "@/components/Home/video/VideoHome";
 import WeHere from "@/components/Home/wehere/WeHere";
-import { fetchAbout, fetchBanners, fetchHomeMedia, fetchNews, fetchProducts } from "@/lib/api";
+import {
+  fetchAbout,
+  fetchBanners,
+  fetchHomeMedia,
+  fetchNews,
+  fetchProducts,
+} from "@/lib/api";
 import { cookies } from "next/headers";
 
 export default async function Home() {

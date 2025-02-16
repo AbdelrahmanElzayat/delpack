@@ -9,10 +9,20 @@ import "swiper/css/effect-cards";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 const SwipeFields = ({ slides }) => {
+  const lang = Cookies.get("lang")
   return (
-    <div className="w-[calc(100%-80px)] max-h-[400px] flex justify-center items-center gap-4">
+    <motion.div
+      initial={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
+      style={{ overflow: "hidden" }}
+      transition={{ duration: 2 }}
+      className="w-[calc(100%-80px)] max-h-[400px] flex justify-center items-center gap-4"
+    >
       <div className="relative w-full max-w-[500px]">
         {/* Custom Navigation Buttons */}
         <button
@@ -84,7 +94,7 @@ const SwipeFields = ({ slides }) => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

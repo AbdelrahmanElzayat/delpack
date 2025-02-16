@@ -40,10 +40,16 @@ const Faqs = () => {
 
   return (
     <>
-      <div className="Faqs py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100 }}
+        transition={{ duration: 2 }}
+        className="Faqs py-16"
+      >
         <div className="container">
           <div className="faqsCards flex items-start flex-wrap lg:flex-nowrap gap-6">
-            {faqsData.map((faq) => (
+            {faqsData.map((faq, i) => (
               <motion.div
                 key={faq.id}
                 onClick={() => setOpen(open === faq.id ? "" : faq.id)}
@@ -82,7 +88,7 @@ const Faqs = () => {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* <div className="Faqs py-16">
     //   <div className="container">
     //     <div className="faqsCards flex items-center gap-6">

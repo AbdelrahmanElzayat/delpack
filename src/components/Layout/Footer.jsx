@@ -5,8 +5,10 @@ import insta from "@/assets/icons/insta.svg";
 import facebook from "@/assets/icons/facebook.svg";
 import twitter from "@/assets/icons/twitter.svg";
 import youtube from "@/assets/icons/youtube.svg";
+import { getTranslations } from "next-intl/server";
 
-const Footer = () => {
+const Footer = async () => {
+  const t = await getTranslations();
   return (
     <footer className="bg-[#D9D9D9] pt-[120px] pb-8">
       <div className="container">
@@ -19,9 +21,7 @@ const Footer = () => {
               className="h-[62px] w-[260px] object-contain"
             />
             <p className="text-textMain text-base font-normal">
-              Delta Misr Plastic Factories Delpak manufactures plastic
-              containers (coloured, transparent and opaque) for many consumer
-              goods and industrial products
+              {t("company_description")}
             </p>
             <div className="flex items-center gap-4">
               <Image src={insta} alt="Instagram" />
@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Contacts */}
           <div>
             <h4 className="font-extrabold text-lg text-textMain mb-4">
-              Contacts
+              {t("contacts")}
             </h4>
             <ul className="flex flex-col gap-2">
               <li>
@@ -75,7 +75,7 @@ const Footer = () => {
           {/* Location */}
           <div>
             <h4 className="font-extrabold text-lg text-textMain mb-4">
-              Location
+              {t("location")}
             </h4>
             <a
               className="underline text-lg font-normal text-textMain block w-[90%]"
@@ -83,10 +83,11 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Meit Haway, Al Santah, El Qorasheya Rd, Gharbiya
+              {t("place")}
             </a>
           </div>
         </div>
+        <p className="text-center mt-10 text-sm font-normal text-[#333]">{t("copyright")}</p>
       </div>
     </footer>
   );

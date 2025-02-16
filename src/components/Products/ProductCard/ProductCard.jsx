@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import AddToCart from "../addTocart/AddToCart";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const ProductCard = ({ product }) => {
+  const t = useTranslations();
   const [color, setColor] = useState("");
 
   // تحديد أول لون تلقائيًا عند تحميل الكومبوننت
@@ -15,7 +17,14 @@ const ProductCard = ({ product }) => {
   }, [product]);
 
   return (
-    <div className="flex flex-col gap-3">
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      exit={{ opacity: 0, y: -100 }}
+      style={{ overflow: "hidden" }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9 }}
+      className="flex flex-col items-center gap-3"
+    >
       {/* صورة المنتج */}
       <motion.div
         whileHover={{ scale: 0.9 }}
@@ -32,22 +41,32 @@ const ProductCard = ({ product }) => {
 
       {/* تفاصيل المنتج */}
       <div className="productContent text-center sm:text-left">
-        <h4 className="text-white font-extrabold text-lg sm:text-xl">
-          Code {product?.code}
+        <h4 className="text-white font-extrabold text-lg sm:text-xl text-start">
+          {t("code")} {product?.code}
         </h4>
 
-        <ul className="text-white font-light text-sm sm:text-base mb-3 sm:mb-4">
-          <li>Diameter: {product?.diameter}mm</li>
-          <li>Height: {product?.height}mm</li>
-          <li>Neck: {product?.neck}mm</li>
-          <li>Volume: {product?.volume}ml</li>
-          <li>Material: {product.material}</li>
+        <ul className="text-white font-light text-sm sm:text-base mb-3 sm:mb-4 flex flex-col items-start">
+          <li>
+            {t("diameter")}: {product?.diameter} mm
+          </li>
+          <li>
+            {t("height")}: {product?.height} mm
+          </li>
+          <li>
+            {t("neck")}: {product?.neck} mm
+          </li>
+          <li>
+            {t("volume")}: {product?.volume} ml
+          </li>
+          <li>
+            {t("material")}: {product.material}
+          </li>
         </ul>
 
         {/* الألوان */}
         <div className="colors flex items-center justify-center sm:justify-start gap-3 sm:gap-5">
           <span className="text-white font-light text-xs sm:text-sm">
-            Color
+            {t("color")}
           </span>
           <div className="flex items-center gap-2 sm:gap-3">
             {product?.colors?.map((c, i) => (
@@ -76,7 +95,7 @@ const ProductCard = ({ product }) => {
           <AddToCart product={product} color={color} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -115,6 +115,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const BlogSwiper = ({ news }) => {
   const [isAutoplay, setIsAutoplay] = useState(true);
@@ -137,7 +138,13 @@ const BlogSwiper = ({ news }) => {
   };
 
   return (
-    <div className="py-10 relative mx-4 md:mx-0">
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      transition={{ duration: 2 }}
+      className="py-10 relative mx-4 md:mx-0"
+    >
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -188,7 +195,7 @@ const BlogSwiper = ({ news }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

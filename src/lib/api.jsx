@@ -1,6 +1,6 @@
 export const fetchProducts = async (page) => {
   const res = await fetch(
-    `https://delpack.poultrystore.net/api/products?page=${page}`,
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/products?page=${page}`,
     {
       cache: "no-store", // عشان يكون Server-side
     }
@@ -12,6 +12,25 @@ export const fetchProducts = async (page) => {
   return {
     products: data.data.products,
     meta: data.data.meta,
+  };
+};
+export const fetchCategories = async (lang = "en") => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/categories`,
+    {
+      cache: "no-store", // عشان يكون Server-side
+      headers: {
+        "Content-Type": "application/json",
+        lang: lang, // إرسال اللغة في الهيدرز
+      },
+    }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch products");
+
+  const data = await res.json();
+  return {
+    categories: data.data,
   };
 };
 export const fetchBanners = async () => {

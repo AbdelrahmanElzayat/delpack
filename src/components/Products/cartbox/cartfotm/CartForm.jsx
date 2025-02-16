@@ -11,21 +11,23 @@ import whatsappIcon from "@/assets/icons/whatsapp.svg";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "@/rtk/store";
 import { cartActions } from "@/rtk/slices/cartslice";
-
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
-  phone: Yup.string()
-    .matches(/^\d+$/, "Invalid phone number")
-    .required("Phone is required"),
-  whatsapp: Yup.string()
-    .matches(/^\d+$/, "Invalid WhatsApp number")
-    .required("WhatsApp is required"),
-});
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 const CartForm = ({ productsIncart }) => {
+  const lang = Cookies.get("lang");
+  const t = useTranslations();
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t("name_required")),
+    email: Yup.string().email(t("invalid_email")).required(t("email_required")),
+    phone: Yup.string()
+      .matches(/^\d+$/, t("invalid_phone"))
+      .required(t("phone_required")),
+    whatsapp: Yup.string()
+      .matches(/^\d+$/, t("invalid_whatsapp"))
+      .required(t("whatsapp_required")),
+  });
   const dispatch = useAppDispatch();
 
   const [status, setStatus] = useState(null);
@@ -46,15 +48,15 @@ const CartForm = ({ productsIncart }) => {
 
     try {
       await axios.post("https://delpack.poultrystore.net/api/order", payload);
-      toast.success("Order placed successfully!");
-      setStatus({ type: "success", message: "Order placed successfully!" });
+      toast.success(t("order_success"));
+      setStatus({ type: "success", message: t("order_success") });
       dispatch(cartActions.clearCart());
       resetForm();
     } catch (error) {
-      toast.error("Failed to place order. Please try again.");
+      toast.error(t("failed_order"));
       setStatus({
         type: "error",
-        message: "Failed to place order. Please try again.",
+        message: t("failed_order"),
       });
     } finally {
       setSubmitting(false);
@@ -62,12 +64,19 @@ const CartForm = ({ productsIncart }) => {
   };
 
   return (
-    <div className="CartForm basis-1/2 md:px-12 lg:px-16 w-full">
+    <motion.div
+      initial={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+      exit={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+      style={{ overflow: "hidden" }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="CartForm md:px-12 lg:px-16 w-full"
+    >
       <h5 className="text-[#F7941D] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold uppercase leading-tight">
-        Continue purchasing
+        {t("continue_purchasing")}
       </h5>
       <p className="text-xs sm:text-sm md:text-lg lg:text-xl font-light text-[#606060] uppercase mt-2">
-        Please add your contact information
+        {t("contact_info")}
       </p>
 
       <Formik
@@ -78,10 +87,14 @@ const CartForm = ({ productsIncart }) => {
         {({ isSubmitting }) => (
           <Form className="w-full flex flex-col items-start gap-10 mt-8">
             {[
-              { name: "name", placeholder: "Name", icon: nameIcon },
-              { name: "email", placeholder: "Email", icon: emailIcon },
-              { name: "phone", placeholder: "Phone", icon: phoneIcon },
-              { name: "whatsapp", placeholder: "WhatsApp", icon: whatsappIcon },
+              { name: "name", placeholder: t("name"), icon: nameIcon },
+              { name: "email", placeholder: t("email"), icon: emailIcon },
+              { name: "phone", placeholder: t("phone"), icon: phoneIcon },
+              {
+                name: t("whatsapp"),
+                placeholder: t("whatsapp"),
+                icon: whatsappIcon,
+              },
             ].map(({ name, placeholder, icon }) => (
               <div key={name} className="w-full max-w-full">
                 <div className="flex justify-between items-center border-b border-gray-400 w-full pb-3">
@@ -106,7 +119,7 @@ const CartForm = ({ productsIncart }) => {
               className="bg-[#0076B1] px-6 md:px-8 lg:px-10 py-2 lg:py-3 pt-3 rounded-md text-lg sm:text-xl font-semibold text-white uppercase mt-4 disabled:opacity-50"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Send"}
+              {isSubmitting ? t("sending") : t("send")}
             </button>
 
             {status && (
@@ -121,7 +134,7 @@ const CartForm = ({ productsIncart }) => {
           </Form>
         )}
       </Formik>
-    </div>
+    </motion.div>
   );
 };
 

@@ -9,19 +9,21 @@ import phoneIcon from "@/assets/icons/phone.svg";
 import emailIcon from "@/assets/icons/email.svg";
 import toast from "react-hot-toast";
 import FormDescription from "./FormDescription";
-
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  message: Yup.string().required("Message is required"),
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
-  phone: Yup.string()
-    .matches(/^\d+$/, "Invalid phone number")
-    .required("Phone is required"),
-});
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 const ContactForm = () => {
+  const lang = Cookies.get("lang");
+  const t = useTranslations();
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t("name_required")),
+    message: Yup.string().required(t("message_required")),
+    email: Yup.string().email(t("invalid_email")).required(t("email_required")),
+    phone: Yup.string()
+      .matches(/^\d+$/, t("invalid_phone"))
+      .required(t("phone_required")),
+  });
   const [status, setStatus] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -52,7 +54,14 @@ const ContactForm = () => {
     }
   };
   return (
-    <div className="pt-6 sm:pt-10 md:pt-20">
+    <motion.div
+      initial={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+      exit={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+      style={{ overflow: "hidden" }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="pt-6 sm:pt-10 md:pt-20"
+    >
       <div className="container">
         <div className="flex items-start justify-between gap-20 flex-col md:flex-row">
           <FormDescription />
@@ -65,9 +74,9 @@ const ContactForm = () => {
               {({ isSubmitting }) => (
                 <Form className="w-full flex flex-col items-start gap-6 mt-8">
                   {[
-                    { name: "name", placeholder: "Name", icon: nameIcon },
-                    { name: "email", placeholder: "Email", icon: emailIcon },
-                    { name: "phone", placeholder: "Phone", icon: phoneIcon },
+                    { name: "name", placeholder: t("name"), icon: nameIcon },
+                    { name: "email", placeholder: t("email"), icon: emailIcon },
+                    { name: "phone", placeholder: t("phone"), icon: phoneIcon },
                   ].map(({ name, placeholder, icon }) => (
                     <div key={name} className="w-full max-w-full">
                       <div className="flex justify-between items-center border-b border-gray-400 w-full pb-3">
@@ -91,7 +100,7 @@ const ContactForm = () => {
                       <Field
                         as="textarea"
                         name="message"
-                        placeholder="What you looking for"
+                        placeholder={t("what_you_looking_for")}
                         className="w-full bg-transparent outline-none text-lg placeholder:font-light resize-none"
                       />
                     </div>
@@ -127,7 +136,7 @@ const ContactForm = () => {
         </div>
         <hr className="my-[70px]" />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

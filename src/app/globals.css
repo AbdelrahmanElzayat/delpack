@@ -1,11 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-lt-w1g');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: 'Helvetica Neue LT W1G', sans-serif !important;
-}
+body {}
 
 .heading {
     background: linear-gradient(90deg, #F7941D 0%, #046AAF 100%);
@@ -18,4 +17,13 @@ body {
     line-height: normal;
     text-transform: uppercase;
     width: 100%;
+}
+
+
+.font-en {
+    font-family: 'Helvetica Neue LT W1G', sans-serif !important;
+}
+
+.font-ar {
+    font-family: 'Cairo', sans-serif;
 }

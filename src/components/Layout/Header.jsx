@@ -4,8 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/logo.png";
 import eg from "@/assets/icons/aricon.svg";
+import en from "@/assets/icons/enicon.svg";
 import { usePathname, useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import Cookies from "js-cookie";
 const Header = () => {
+  const router = useRouter();
+  const locale = useLocale(); // اللغة الحالية
+
+  const switchLanguage = (newLang) => {
+    Cookies.set("lang", newLang, { expires: 365 }); // تخزين اللغة في الكوكيز لمدة سنة
+    router.refresh(); // تحديث الصفحة لتطبيق اللغة الجديدة
+  };
+  const t = useTranslations();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -46,27 +57,27 @@ const Header = () => {
   }, []);
   const links = [
     {
-      name: "Home",
+      name: t("home"),
       href: "/",
     },
     {
-      name: "Products",
+      name: t("products"),
       href: "/products",
     },
     {
-      name: "About us",
+      name: t("about_us"),
       href: "/#about-us",
     },
     {
-      name: "Catalogue",
+      name: t("catalogue"),
       href: "/catalogue",
     },
     {
-      name: "News",
+      name: t("news"),
       href: "/#news",
     },
     {
-      name: "Contact us",
+      name: t("contact_us"),
       href: "/contact-us",
     },
   ];
@@ -120,8 +131,15 @@ const Header = () => {
               })}
             </ul>
           </nav>
-          <button className="cursor-pointer">
-            <Image src={eg} alt="changelang" className="w-6 sm:w-8" />
+          <button
+            className="cursor-pointer"
+            onClick={() => switchLanguage(locale === "en" ? "ar" : "en")}
+          >
+            {locale === "en" ? (
+              <Image src={eg} alt="Arabic language" className="w-6 sm:w-8" />
+            ) : (
+              <Image src={en} alt="اللغة الانجليزية" className="w-6 sm:w-8" />
+            )}
           </button>
 
           {/* *********************** */}

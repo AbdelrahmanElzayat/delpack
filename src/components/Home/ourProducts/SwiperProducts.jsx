@@ -4,12 +4,13 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import { EffectCoverflow } from "swiper/modules";
 import Image from "next/image";
-import productEx from "@/assets/images/productEx.png";
 import rightProduct from "@/assets/icons/rightProduct.svg";
 import leftProduct from "@/assets/icons/leftProduct.svg";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import Cookies from "js-cookie";
 
 const ProductSwiper = ({ products }) => {
   const swiperRef = useRef(null);
@@ -17,16 +18,24 @@ const ProductSwiper = ({ products }) => {
   const handleSlideChange = (swiper) => {
     setActiveProduct(products[swiper.realIndex]);
   };
-
+  const t = useTranslations();
+  const lang = Cookies.get("lang");
   return (
-    <div className="products relative z-50 bg-products-gradient py-10 pl-12 pr-12 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between">
+    <div className="products relative z-50 bg-products-gradient py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between">
       {/* الجانب الأيسر: المنتج النشط */}
-      <div className="leftSide relative mb-8 lg:mb-0">
+      <motion.div
+        initial={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
+        transition={{ duration: 2 }}
+        style={{ overflow: "hidden" }}
+        className="leftSide relative mb-8 lg:mb-0"
+      >
         <div className="activeProductImg">
           <div className="mainProduct">
             <Image
               src={activeProduct.image}
-              alt={activeProduct.code}
+              alt={"productActive"}
               width={500}
               height={400}
               className="max-w-[300px] lg:max-w-[400px] h-[50vh] lg:h-[90vh] object-contain mx-auto"
@@ -35,46 +44,61 @@ const ProductSwiper = ({ products }) => {
         </div>
         {/* أزرار التنقل حول الصورة */}
         <button
-          className="absolute -left-4 md:-left-6 top-1/2 transform -translate-y-1/2 "
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 "
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <Image src={leftProduct} alt="prev" />
         </button>
         <button
-          className="absolute -right-4 md:-right-6 top-1/2 transform -translate-y-1/2 "
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 "
           onClick={() => swiperRef.current?.slideNext()}
         >
           <Image src={rightProduct} alt="next" />
         </button>
-      </div>
+      </motion.div>
 
       {/* الجانب الأيمن: معلومات المنتج والسوايبر */}
-      <div className="rightSide flex flex-col justify-center gap-8 text-center lg:text-left overflow-hidden">
+      <div className="w-full rightSide flex flex-col justify-center gap-8 text-center lg:text-left overflow-hidden">
         {/* بيانات المنتج النشط */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+          transition={{ duration: 2 }}
+          style={{ overflow: "hidden" }}
+        >
           <div className="productData flex flex-col gap-3 w-full mx-auto lg:mx-0">
-            <h3 className="w-fit text-center border-b-4 border-b-[#F7941D] text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-extrabold">
-              {activeProduct.code}
+            <h3 className="w-fit border-b-4 border-b-[#F7941D] text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-extrabold">
+              {t("code")} {activeProduct.code}
             </h3>
-            {/* <p className="max-w-[300px] text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
-              {activeProduct.details.map((detail, index) => (
-                <span key={index}>
-                  {detail}
-                  <br />
-                </span>
-              ))}
-            </p> */}
-            <ul className="w-full text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
-              <li>Diameter..................{activeProduct?.diameter}mm</li>
-              <li>Height..................{activeProduct?.height}mm</li>
-              <li>Neck..................{activeProduct?.neck}mm</li>
-              <li>Volume..................{activeProduct?.volume}ml</li>
-              <li>Material..................{activeProduct.material}</li>
+            <ul className="w-full flex flex-col items-start text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
+              <li>
+                {t("diameter")}..................{activeProduct?.diameter} mm
+              </li>
+              <li>
+                {t("height")}..................{activeProduct?.height} mm
+              </li>
+              <li>
+                {t("neck")}..................{activeProduct?.neck} mm
+              </li>
+              <li>
+                {t("volume")}..................{activeProduct?.volume} ml
+              </li>
+              <li>
+                {t("material")}..................{activeProduct.material}
+              </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="max-w-[600px] md:w-full md:max-w-[900px] w-full products bg-productsList-gradient py-4 px-6 lg:px-0 container">
+        {/* <div className="md:w-full md:max-w-[900px] w-full products bg-productsList-gradient py-4 px-6 lg:px-0 container"> */}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
+          transition={{ duration: 2 }}
+          className="w-full products bg-productsList-gradient py-4 px-6 lg:px-0"
+        >
           <div className="">
             <Swiper
               slidesPerView={5}
@@ -83,11 +107,17 @@ const ProductSwiper = ({ products }) => {
               loop
               onSlideChange={handleSlideChange}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
+              breakpoints={{
+                320: { slidesPerView: 3, spaceBetween: 10 }, // للشاشات الصغيرة
+                480: { slidesPerView: 3, spaceBetween: 15 },
+                768: { slidesPerView: 3, spaceBetween: 20 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
+                1280: { slidesPerView: 5, spaceBetween: 20 }, // للشاشات الكبيرة
+              }}
             >
               {products.map((product) => (
                 <SwiperSlide key={product.id}>
                   <Image
-                    // src={productEx}
                     src={product.image}
                     alt={product.title}
                     width={500}
@@ -98,14 +128,14 @@ const ProductSwiper = ({ products }) => {
               ))}
             </Swiper>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <Link
         href={"/products"}
-        className="bg-[#0A6BAB] rounded-2xl px-4 md:px-6 lg:px-8 xl:px-10 py-2 lg:py-3 xl:py-4  absolute left-1/2 -translate-x-1/2 z-[10000000] -bottom-4 md:-bottom-6 lg:-bottom-8 xl:-bottom-10 flex justify-center items-center text-white text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-[30px] font-bold "
+        className="bg-[#0A6BAB] rounded-2xl px-4 md:px-6 lg:px-8 xl:px-10 py-2 lg:py-3 xl:py-4  absolute left-1/2 -translate-x-1/2 z-50 -bottom-4 md:-bottom-6 lg:-bottom-8 xl:-bottom-10 flex justify-center items-center text-white text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-[30px] font-bold "
       >
-        explore more
+        {t("explore_more")}
       </Link>
     </div>
   );

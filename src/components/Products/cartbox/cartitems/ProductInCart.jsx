@@ -4,8 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useAppDispatch } from "@/rtk/store";
 import { cartActions } from "@/rtk/slices/cartslice";
+import { useTranslations } from "next-intl";
 
 const ProductInCart = ({ product, data }) => {
+  const t = useTranslations();
   const currentProduct = useMemo(
     () => data?.find((item) => item.id === product.id),
     [data, product.id]
@@ -40,21 +42,21 @@ const ProductInCart = ({ product, data }) => {
       {/* المحتوى */}
       <div className="productContent w-full md:w-auto">
         <h4 className="text-white font-extrabold text-base sm:text-lg md:text-xl">
-          Code {product?.code}
+          {t("code")} {product?.code}
         </h4>
 
         <ul className="text-white font-light mb-4 text-xs md:text-sm">
-          <li>Diameter: {product?.diameter}mm</li>
-          <li>Height: {product?.height}mm</li>
-          <li>Neck: {product?.neck}mm</li>
-          <li>Volume: {product?.volume}ml</li>
-          <li>Material: {product.material}</li>
+          <li>{t("diameter")}: {product?.diameter} mm</li>
+          <li>{t("height")}: {product?.height} mm</li>
+          <li>{t("neck")}: {product?.neck} mm</li>
+          <li>{t("volume")}: {product?.volume} ml</li>
+          <li>{t("material")}: {product.material}</li>
         </ul>
 
         {/* الألوان */}
         <div className="colors flex items-center gap-3 md:gap-5">
           <span className="text-white font-light text-xs md:text-sm">
-            color
+            {t("color")}
           </span>
           <div className="flex items-center gap-2 md:gap-3">
             {colors?.map((c, i) => (

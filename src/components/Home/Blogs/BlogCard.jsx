@@ -1,8 +1,10 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const BlogCard = ({ title, image, id }) => {
+  const t = useTranslations();
   return (
     <div className="blog-card min-h-[400px] sm:min-h-[600px] w-full lg:w-[1000px] rounded-[46px] bg-[#D9D9D9] p-5 sm:p-10 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-10">
@@ -22,7 +24,7 @@ const BlogCard = ({ title, image, id }) => {
           href={`/news/${id}`}
           className="bg-[#FFB548] text-sm sm:text-lg font-normal text-center uppercase pt-2 sm:pt-3 pb-1 sm:pb-2 px-6 sm:px-8 w-fit"
         >
-          READ MORE
+          {t("read_more")}
         </Link>
       </div>
     </div>

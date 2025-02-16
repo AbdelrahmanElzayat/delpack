@@ -5,18 +5,19 @@ import "swiper/css/free-mode";
 import { Autoplay, FreeMode } from "swiper/modules"; // استيراد الـ Autoplay
 import Image from "next/image";
 import { useFetchClientsQuery } from "@/rtk/slices/clients";
+import { useTranslations } from "next-intl";
 const Clients = () => {
   const { data: clients } = useFetchClientsQuery("en");
-
+  const t = useTranslations();
   return (
     <section className="py-6 lg:mt-31 xl:mt-40 lg:py-20">
       <div className="container ">
         <div className="mainHeading flex flex-col justify-center items-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[51px] py-3 font-extrabold uppercase text-center">
-            OUR CLIENTS
+            {t("our_clients")}
           </h2>
           <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xltext-center text-[#656565] font-light text-center">
-            Trusted by industry leaders and innovators worldwide.
+            {t("trusted_clients")}
           </p>
         </div>
         <Swiper

@@ -1,10 +1,12 @@
 "use client";
 import { cartActions } from "@/rtk/slices/cartslice";
 import { useAppDispatch, useAppSelector } from "@/rtk/store";
+import { useTranslations } from "next-intl";
 import React, { useState, useCallback } from "react";
 import toast from "react-hot-toast";
 
 const AddToCart = ({ product, color }) => {
+  const t = useTranslations();
   const [qty, setQty] = useState(1);
   const dispatch = useAppDispatch();
 
@@ -19,9 +21,9 @@ const AddToCart = ({ product, color }) => {
 
   // إضافة المنتج إلى السلة
   const addToCart = useCallback(() => {
-    if (!color) return toast.error("please select color");
+    if (!color) return toast.error(t("colorRequires"));
     dispatch(cartActions.addItem({ product, color, qty }));
-    toast.success("Product Added Successfully");
+    toast.success(t("added"));
   }, [dispatch, product, color, qty]);
 
   return (
@@ -56,7 +58,7 @@ const AddToCart = ({ product, color }) => {
         onClick={addToCart}
         disabled={!color}
       >
-        Add to Cart
+        {t("add_to_cart")}
       </button>
     </div>
   );

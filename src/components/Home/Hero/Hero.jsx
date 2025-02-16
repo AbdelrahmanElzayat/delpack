@@ -7,10 +7,17 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import arrowright from "@/assets/icons/arrowright.svg";
 import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
 
 const Hero = ({ banners }) => {
   return (
-    <div className="h-[calc(50vh+150px)] md:h-[calc(100vh+150px)] relative">
+    <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+      className="h-[calc(50vh+150px)] md:h-[calc(100vh+150px)] relative"
+    >
       <Swiper
         loop={true}
         autoplay={{
@@ -64,7 +71,7 @@ const Hero = ({ banners }) => {
           className="w-6 h-6 md:w-auto md:h-auto"
         />
       </button>
-    </div>
+    </motion.div>
   );
 };
 

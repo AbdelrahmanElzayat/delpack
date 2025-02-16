@@ -8,25 +8,31 @@ import "./filter.css";
 import left from "@/assets/icons/leftpagination.svg";
 import right from "@/assets/icons/rightpagination.svg";
 import Image from "next/image";
-const categories = [
-  "All",
-  "Edible oils",
-  "Soft drink bottles",
-  "Honey packages",
-  "Molasses packages",
-  "Juices",
-  "Water bottles",
-  "Dairy products",
-  "Household cleaners",
-];
+import { useTranslations } from "next-intl";
+import Cookies from "js-cookie";
+import { motion } from "framer-motion";
 
-const SelectCategory = ({ values, handleChange }) => {
+const SelectCategory = ({ values, handleChange, categories }) => {
   const swiperRef = useRef(null);
+  const t = useTranslations();
+  const lang = Cookies.get("lang");
 
   return (
-    <div className="SelectCategory border-b border-[#A4A4A4] pb-4 flex items-center gap-6 lg:gap-20 w-full flex-col lg:flex-row">
-      <h3 className="text-[#F7941D] text-xl sm:text-2xl font-bold xl:border-r xl:border-[#F7941D] pr-4 w-full lg:w-[15%]">
-        CATEGORY
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      transition={{ duration: 1 }}
+      className="SelectCategory border-b border-[#A4A4A4] pb-4 flex items-center gap-6 lg:gap-20 w-full flex-col lg:flex-row"
+    >
+      <h3
+        className={`text-[#F7941D] text-xl sm:text-2xl font-bold xl:${
+          lang === "en" ? "border-r" : "border-l"
+        } xl:border-[#F7941D] ${
+          lang === "en" ? "pr-4" : "pl-4"
+        } w-full lg:w-[15%]`}
+      >
+        {t("category")}
       </h3>
 
       <div className="relative w-[75%]">
@@ -51,19 +57,38 @@ const SelectCategory = ({ values, handleChange }) => {
           className="w-full"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
-          {categories.map((category) => (
-            <SwiperSlide key={category} className="w-fit">
+          <SwiperSlide className="w-fit">
+            <div className="flex items-center gap-2 text-white px-4 py-2">
+              <input
+                type="checkbox"
+                name="category"
+                value={0}
+                checked={values.category.includes("0")}
+                onChange={handleChange}
+                className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
+              />
+              <label className="text-lg font-light whitespace-nowrap uppercase">
+                {t("all")}
+              </label>
+            </div>
+          </SwiperSlide>
+          {categories?.map((category) => (
+            <SwiperSlide key={category.id} className="w-fit">
               <div className="flex items-center gap-2 text-white px-4 py-2">
                 <input
                   type="checkbox"
                   name="category"
-                  value={category}
-                  checked={values.category.includes(category)}
+                  value={category?.id}
+                  checked={
+                    values.category.includes(category?.id.toString()) &&
+                    !values.category.includes("0")
+                  }
                   onChange={handleChange}
                   className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
+                  disabled={values.category.includes("0")}
                 />
-                <label className="text-lg font-light whitespace-nowrap">
-                  {category}
+                <label className="text-lg font-light whitespace-nowrap uppercase">
+                  {category?.name}
                 </label>
               </div>
             </SwiperSlide>
@@ -78,7 +103,7 @@ const SelectCategory = ({ values, handleChange }) => {
           <Image src={right} alt="left" />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
