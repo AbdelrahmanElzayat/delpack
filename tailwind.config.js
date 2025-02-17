@@ -16,7 +16,7 @@ module.exports = {
           "linear-gradient(90deg, rgba(217, 217, 217, 0.10) 0%, rgba(115, 115, 115, 0.10) 100%);",
         "custom-gradient-img":
           "linear-gradient(to left, #FFF, rgba(255, 255, 255, 0.00))",
-        products: "linear-gradient(to right, #4E5864, #0A6BAB)",
+        products: "linear-gradient(to bottom, #4E5864,#4E5864)",
         socials: "linear-gradient(90deg, #F7941D 0%, #2065A3 100%)",
       },
       boxShadow: {

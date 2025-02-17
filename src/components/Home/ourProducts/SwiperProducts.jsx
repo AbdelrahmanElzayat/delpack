@@ -28,7 +28,7 @@ const ProductSwiper = ({ products }) => {
         whileInView={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
         transition={{ duration: 2 }}
-        className="leftSide relative mb-8 lg:mb-0"
+        className="leftSide relative mb-8 lg:mb-0 w-full md:w-auto md:basis-1/2 overflow-hidden"
       >
         <div className="activeProductImg">
           <div className="mainProduct">
@@ -37,7 +37,7 @@ const ProductSwiper = ({ products }) => {
               alt={"productActive"}
               width={500}
               height={400}
-              className="max-w-[300px] lg:max-w-[400px] h-[50vh] lg:h-[90vh] object-contain mx-auto"
+              className="max-w-[260px] lg:max-w-[350px] h-[50vh] lg:h-[90vh] object-contain mx-auto"
             />
           </div>
         </div>
@@ -107,6 +107,7 @@ const ProductSwiper = ({ products }) => {
               onSlideChange={handleSlideChange}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               breakpoints={{
+                250: { slidesPerView: 2, spaceBetween: 10 }, // للشاشات الصغيرة
                 320: { slidesPerView: 3, spaceBetween: 10 }, // للشاشات الصغيرة
                 480: { slidesPerView: 3, spaceBetween: 15 },
                 768: { slidesPerView: 3, spaceBetween: 20 },

@@ -13,6 +13,21 @@ const initialState = {
   totalQuantity: storedItems.totalQuantity,
 };
 
+// let storedItems = {
+//   cartItems: [],
+//   totalQuantity: 0,
+// };
+
+// if (typeof window !== "undefined") {
+//   const cartData = localStorage.getItem("cart");
+//   storedItems = cartData ? JSON.parse(cartData) : storedItems;
+// }
+
+// const initialState = {
+//   cartItems: storedItems.cartItems,
+//   totalQuantity: storedItems.totalQuantity,
+// };
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState,
