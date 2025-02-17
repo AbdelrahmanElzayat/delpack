@@ -53,12 +53,16 @@ const cartSlice = createSlice({
     },
 
     deleteItem: (state, action) => {
-      const id = action.payload;
-      const existingItem = state.cartItems.find((item) => item.id === id);
+      const { id, color } = action.payload;
+      const existingItem = state.cartItems.find(
+        (item) => item.id === id && item.color === color
+      );
 
       if (existingItem) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== id);
-        state.totalQuantity = state.totalQuantity - existingItem.quantity;
+        state.cartItems = state.cartItems.filter(
+          (item) => !(item.id === id && item.color === color) // تصحيح الفلترة
+        );
+        state.totalQuantity -= existingItem.quantity;
       }
       //   state.totalAmount = state.cartItems.reduce((acc, item) => {
       //     acc += Number(item.price.stringValue) * Number(item.quantity);

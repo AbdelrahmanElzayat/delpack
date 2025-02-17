@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const Faqs = () => {
+  const t = useTranslations();
   const [open, setOpen] = useState("");
 
   const cardVariants = {
@@ -20,21 +22,18 @@ const Faqs = () => {
   const faqsData = [
     {
       id: "vision",
-      title: "vision",
-      description:
-        "The main center, administration and factories are located in Gharbia Governorate. The company's area is about twenty-five thousand square meters equipped with the best production lines and the best capabilities consisting of injection and blowing m.",
+      title: t("our_vision"),
+      description: t("our_vision_des"),
     },
     {
       id: "goals",
-      title: "goals",
-      description:
-        "The main center, administration and factories are located in Gharbia Governorate. The company's area is about twenty-five thousand square meters equipped with the best production lines and the best capabilities consisting of injection and blowing m.",
+      title: t("goals"),
+      description: t("goals_des"),
     },
     {
       id: "strategy",
-      title: "strategy",
-      description:
-        "The main center, administration and factories are located in Gharbia Governorate. The company's area is about twenty-five thousand square meters equipped with the best production lines and the best capabilities consisting of injection and blowing m.",
+      title: t("strategy"),
+      description: t("strategy_des"),
     },
   ];
 
@@ -53,7 +52,7 @@ const Faqs = () => {
               <motion.div
                 key={faq.id}
                 onClick={() => setOpen(open === faq.id ? "" : faq.id)}
-                className={`faqCard flex-grow bg-[#E7E7E7] rounded-lg flex flex-col justify-center items-center gap-4 py-2 lg:py-4 px-6 lg:pt-6 lg:pb-0 cursor-pointer transition-all`}
+                className={`faqCard flex-1 flex-grow bg-[#E7E7E7] rounded-lg flex flex-col justify-center items-center gap-4 py-2 lg:py-4 px-6 lg:pt-6 lg:pb-0 cursor-pointer transition-all`}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
@@ -65,7 +64,7 @@ const Faqs = () => {
                     animate={open === faq.id ? "visible" : "hidden"}
                     variants={contentVariants}
                   >
-                    Our
+                    {t("our")}
                   </motion.span>
                   <span
                     className={`${
@@ -78,7 +77,7 @@ const Faqs = () => {
                   </span>
                 </div>
                 <motion.p
-                  className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-[#656565]"
+                  className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-[#656565] p-2"
                   animate={open === faq.id ? "visible" : "hidden"}
                   variants={contentVariants}
                 >

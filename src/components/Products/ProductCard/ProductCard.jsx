@@ -47,16 +47,16 @@ const ProductCard = ({ product }) => {
 
         <ul className="text-white font-light text-sm sm:text-base mb-3 sm:mb-4 flex flex-col items-start">
           <li>
-            {t("diameter")}: {product?.diameter} mm
+            {t("diameter")}: {product?.diameter} {t("mm")}
           </li>
           <li>
-            {t("height")}: {product?.height} mm
+            {t("height")}: {product?.height} {t("mm")}
           </li>
           <li>
-            {t("neck")}: {product?.neck} mm
+            {t("neck")}: {product?.neck} {t("mm")}
           </li>
           <li>
-            {t("volume")}: {product?.volume} ml
+            {t("volume")}: {product?.volume} {t("ml")}
           </li>
           <li>
             {t("material")}: {product.material}

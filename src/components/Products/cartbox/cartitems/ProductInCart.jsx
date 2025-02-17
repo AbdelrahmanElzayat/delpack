@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useAppDispatch } from "@/rtk/store";
 import { cartActions } from "@/rtk/slices/cartslice";
 import { useTranslations } from "next-intl";
-
+import deleteIcon from "@/assets/icons/delete.svg";
 const ProductInCart = ({ product, data }) => {
   const t = useTranslations();
   const currentProduct = useMemo(
@@ -40,17 +40,27 @@ const ProductInCart = ({ product, data }) => {
       </motion.div>
 
       {/* المحتوى */}
-      <div className="productContent w-full md:w-auto">
+      <div className="productContent w-full ">
         <h4 className="text-white font-extrabold text-base sm:text-lg md:text-xl">
           {t("code")} {product?.code}
         </h4>
 
         <ul className="text-white font-light mb-4 text-xs md:text-sm">
-          <li>{t("diameter")}: {product?.diameter} mm</li>
-          <li>{t("height")}: {product?.height} mm</li>
-          <li>{t("neck")}: {product?.neck} mm</li>
-          <li>{t("volume")}: {product?.volume} ml</li>
-          <li>{t("material")}: {product.material}</li>
+          <li>
+            {t("diameter")}: {product?.diameter} {t("mm")}
+          </li>
+          <li>
+            {t("height")}: {product?.height} {t("mm")}
+          </li>
+          <li>
+            {t("neck")}: {product?.neck} {t("mm")}
+          </li>
+          <li>
+            {t("volume")}: {product?.volume} {t("ml")}
+          </li>
+          <li>
+            {t("material")}: {product.material}
+          </li>
         </ul>
 
         {/* الألوان */}
@@ -90,7 +100,7 @@ const ProductInCart = ({ product, data }) => {
         </div>
 
         {/* أزرار الإضافة للسلة */}
-        <div className="AddToCart flex items-center gap-3 mt-4">
+        <div className="AddToCart flex justify-between items-center gap-3 mt-4">
           <div className="flex items-center gap-1">
             <button
               className="w-6 h-6 bg-white rounded-sm text-[#6E6D6D] flex items-center justify-center"
@@ -112,6 +122,19 @@ const ProductInCart = ({ product, data }) => {
               +
             </button>
           </div>
+          <button
+            className="delete flex items-center gap-1 text-[#c61515] font-bold text-xs md:text-sm "
+            onClick={() =>
+              dispatch(
+                cartActions.deleteItem({
+                  id: product?.id,
+                  color: product?.color,
+                })
+              )
+            }
+          >
+            {t("delete")} <Image src={deleteIcon} alt="delete" />
+          </button>
         </div>
       </div>
     </div>

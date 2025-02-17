@@ -19,9 +19,16 @@
   "explore_more": "Explore more",
   "company_name": "Delta Misr For Plastic",
   "our_fields": "Our Fields",
-  "our_vision": "Our vision",
+
+  "our": "Our",
+  "our_vision": "vision",
   "goals": "Goals",
   "strategy": "Strategy",
+
+  "our_vision_des": "Delta Misr For Plastic, Trade & Distribution (Delpak) is a leading company in the field of plastic packaging manufacturing, especially molded packaging, supporting a diverse range of consumer goods and industrial products known for their outstanding quality and high-purity materials. We believe in excellence, and through innovative manufacturing techniques, we provide the best products with the highest quality materials at the best competitive prices. We strive to make our products the preferred choice for our customers through quality and outstanding design.",
+  "goals_des": "Our main goal and vision at Delta Misr For Plastic, Trade & Distribution - Delpak is to continuously strive for the highest quality in our products, and to engage in ongoing development and research to meet the evolving needs of the market and our customers.",
+  "strategy_des": "We follow global quality standards, continuously improve and develop our work environment and production lines, and invest in human resource development through skilled labor training. We also ensure product diversity to deliver safe and high-quality products that uphold the company's reputation, which has been trusted for over 25 years by major companies operating in consumer markets.",
+
   "help_section": "We’re here to help",
   "get_in_touch": "Get in touch for inquiries, collaborations, or support",
   "explore_catalogue": "Explore our catalogue",
@@ -74,5 +81,8 @@
   "mobile": "Mob",
   "what_you_looking_for": "What you looking for",
   "message_required": "Message is required",
-  "business_phone": "Business phone"
+  "business_phone": "Business phone",
+  "delete": "delete",
+  "mm": "mm",
+  "ml": "ml"
 }

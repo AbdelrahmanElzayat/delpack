@@ -21,9 +21,7 @@ const ProductSwiper = ({ products }) => {
   const t = useTranslations();
   const lang = Cookies.get("lang");
   return (
-    <div
-      className="products relative z-50 bg-products-gradient py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between"
-    >
+    <div className="products relative z-50 bg-products-gradient py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between">
       {/* الجانب الأيسر: المنتج النشط */}
       <motion.div
         initial={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
@@ -73,16 +71,17 @@ const ProductSwiper = ({ products }) => {
             </h3>
             <ul className="w-full flex flex-col items-start text-white font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl">
               <li>
-                {t("diameter")}..................{activeProduct?.diameter} mm
+                {t("diameter")}..................{activeProduct?.diameter}{" "}
+                {t("mm")}
               </li>
               <li>
-                {t("height")}..................{activeProduct?.height} mm
+                {t("height")}..................{activeProduct?.height} {t("mm")}
               </li>
               <li>
-                {t("neck")}..................{activeProduct?.neck} mm
+                {t("neck")}..................{activeProduct?.neck} {t("mm")}
               </li>
               <li>
-                {t("volume")}..................{activeProduct?.volume} ml
+                {t("volume")}..................{activeProduct?.volume} {t("ml")}
               </li>
               <li>
                 {t("material")}..................{activeProduct.material}
