@@ -20,15 +20,17 @@ import {
 } from "@/lib/api";
 import { cookies } from "next/headers";
 
-const lang = cookies().get("lang")?.value || "en";
-export const metadata = {
-  title: lang === "en" ? "DELPACK || Home" : "ديلباك || الرئيسية",
-  description:
-    lang === "en"
-      ? "Delta Misr Plastic Factories Delpak manufactures plastic containers (coloured, transparent and opaque) for many consumer goods and industrial products"
-      : "تقوم مصانع دلتا مصر للبلاستيك (Delpak) بتصنيع الحاويات البلاستيكية (الملونة، الشفافة والمعتمة) للعديد من السلع الاستهلاكية والمنتجات الصناعية",
-};
+export async function generateMetadata() {
+  const lang = cookies().get("lang")?.value || "en";
 
+  return {
+    title: lang === "en" ? "DELPACK || Home" : "ديلباك || الرئيسية",
+    description:
+      lang === "en"
+        ? "Delta Misr Plastic Factories Delpak manufactures plastic containers (coloured, transparent and opaque) for many consumer goods and industrial products"
+        : "تقوم مصانع دلتا مصر للبلاستيك (Delpak) بتصنيع الحاويات البلاستيكية (الملونة، الشفافة والمعتمة) للعديد من السلع الاستهلاكية والمنتجات الصناعية",
+  };
+}
 export default async function Home() {
   const lang = cookies().get("lang")?.value || "en";
   const { banners } = await fetchBanners();
