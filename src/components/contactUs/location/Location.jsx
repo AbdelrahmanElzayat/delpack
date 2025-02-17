@@ -3,8 +3,8 @@ import React from "react";
 import insta from "@/assets/icons/instaSocial.svg";
 import facebook from "@/assets/icons/faceSocial.svg";
 import linkedIn from "@/assets/icons/linkedinsocial.svg";
-import s3 from "@/assets/icons/twitterSocial.svg";
-import s4 from "@/assets/icons/youtubesocial.svg";
+// import s3 from "@/assets/icons/twitterSocial.svg";
+// import s4 from "@/assets/icons/youtubesocial.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 const Location = () => {
