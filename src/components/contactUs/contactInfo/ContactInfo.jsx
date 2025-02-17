@@ -36,19 +36,19 @@ const ContactInfo = () => {
                 {t("email")}
               </h4>
               <div className="emails flex flex-col">
-                <a
+                {/* <a
                   className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
-                  href="mailto:Delta_egy@hotmail.com"
+                  href="mailto:Sales@dc-egy.com"
                   target="blank"
                 >
-                  Delta_egy@hotmail.com
-                </a>
+                  Sales@dc-egy.com
+                </a> */}
                 <a
                   className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
-                  href="mailto:info@dc-egy.com"
+                  href="mailto:Sales@dc-egy.com"
                   target="blank"
                 >
-                  info@dc-egy.com
+                  Sales@dc-egy.com
                 </a>
               </div>
             </div>
@@ -93,10 +93,10 @@ const ContactInfo = () => {
                   </a>
                   <a
                     className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
-                    href="tel:+20404340505"
+                    href="tel:+20404341346"
                     target="blank"
                   >
-                    <bdi>+2 0404340505</bdi>
+                    <bdi>+2 0404341346</bdi>
                   </a>
                 </div>
               </div>
@@ -105,20 +105,6 @@ const ContactInfo = () => {
                   {t("mobile")}
                 </h4>
                 <div className="links flex flex-col">
-                  <a
-                    className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
-                    href="tel:+201012248667"
-                    target="blank"
-                  >
-                    <bdi>+2 01012248667</bdi>
-                  </a>
-                  <a
-                    className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
-                    href="tel:+201012248667"
-                    target="blank"
-                  >
-                    <bdi>+2 01012248667</bdi>
-                  </a>
                   <a
                     className="font-light text-xs sm:text-sm md:text-lg lg:text-xl text-[#3F3F3F]"
                     href="tel:+201012248667"

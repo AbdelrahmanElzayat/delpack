@@ -20,7 +20,7 @@ const page = async ({ searchParams }) => {
   const { products, meta } = await fetchProducts(currentPage);
   const { categories } = await fetchCategories(lang);
   return (
-    <div className="bg-products">
+    <div className="bg-products overflow-hidden">
       <HeroProducts />
       <FilterProducts categories={categories} />
       <ProductList products={products} meta={meta} />

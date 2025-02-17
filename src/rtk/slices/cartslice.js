@@ -122,8 +122,6 @@ const cartSlice = createSlice({
     },
     changeColor: (state, action) => {
       const { id, oldColor, newColor } = action.payload;
-      console.log(id, oldColor, newColor);
-
       const existingItem = state.cartItems.find(
         (item) => item.id === id && item.color === oldColor
       );

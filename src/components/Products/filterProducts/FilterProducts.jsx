@@ -62,9 +62,9 @@ const FilterProducts = ({ categories }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
-      className="FilterProducts py-16"
+      className="FilterProducts py-8 sm:py-10 md:py-12 lg:py-16"
     >
-      <div className="container flex flex-col gap-16">
+      <div className="container flex flex-col gap-6 sm:gap-8 lg:gap-10 xl:gap-16">
         <Search values={filters} handleChange={handleChange} />
         <SelectCategory
           values={filters}

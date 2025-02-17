@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 const Blogs = ({ news }) => {
   const t = useTranslations();
   return (
-    <section className="Blogs relative bg-white lg:h-[700px] py-10" id="news">
+    <section className="Blogs relative bg-white lg:h-[700px] py-6 md:py-8 lg:py-10" id="news">
       <div className="absolute top-0 left-0 w-full h-1/2 bg-[#D9D9D9] z-10"></div>
       <div className="relative z-20">
         <div className="mainHeading flex flex-col justify-center items-center">

@@ -63,9 +63,9 @@ const ContactForm = () => {
       className="pt-6 sm:pt-10 md:pt-20"
     >
       <div className="container">
-        <div className="flex items-start justify-between gap-20 flex-col md:flex-row">
+        <div className="flex items-start justify-between gap-6 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 flex-col md:flex-row">
           <FormDescription />
-          <div className="basis-1/2">
+          <div className="w-full xl:basis-1/2">
             <Formik
               initialValues={{ name: "", email: "", phone: "", message: "" }}
               validationSchema={validationSchema}
@@ -134,7 +134,7 @@ const ContactForm = () => {
             </Formik>
           </div>
         </div>
-        <hr className="my-[70px]" />
+        <hr className="my-6 sm:my-7 md:my-10 lg:my-[60px] xl:my-[70px]" />
       </div>
     </motion.div>
   );

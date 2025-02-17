@@ -10,7 +10,7 @@ const OurFields = ({ description, fields, slides }) => {
   const lang = Cookies.get("lang");
   const t = useTranslations();
   return (
-    <div className="py-12" style={{ overflow: "hidden" }}>
+    <div className="py-6 md:py-8 lg:py-12" style={{ overflow: "hidden" }}>
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
           {/* Swiper Section */}

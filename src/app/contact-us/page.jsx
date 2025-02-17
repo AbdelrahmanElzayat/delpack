@@ -15,7 +15,7 @@ export const metadata = {
 };
 const page = () => {
   return (
-    <div children>
+    <div className="overflow-hidden">
       <HeroContact />
       <ContactForm />
       <ContactInfo />

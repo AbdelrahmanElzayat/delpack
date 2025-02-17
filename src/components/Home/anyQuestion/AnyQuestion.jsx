@@ -15,7 +15,7 @@ const AnyQuestion = () => {
         transition={{ duration: 2 }}
         className="container"
       >
-        <h2 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[55px] font-extrabold uppercase text-white lg:mb-8">
+        <h2 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[55px] font-extrabold uppercase text-white lg:mb-8 mb-3">
           {t("have_questions")}
         </h2>
         <Link

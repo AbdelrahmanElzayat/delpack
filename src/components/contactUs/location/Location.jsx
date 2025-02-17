@@ -1,14 +1,27 @@
 "use client";
 import React from "react";
-import s1 from "@/assets/icons/instaSocial.svg";
-import s2 from "@/assets/icons/faceSocial.svg";
+import insta from "@/assets/icons/instaSocial.svg";
+import facebook from "@/assets/icons/faceSocial.svg";
+import linkedIn from "@/assets/icons/linkedinsocial.svg";
 import s3 from "@/assets/icons/twitterSocial.svg";
 import s4 from "@/assets/icons/youtubesocial.svg";
-import s5 from "@/assets/icons/linkedinsocial.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 const Location = () => {
-  const socials = [s1, s2, s3, s5, s4];
+  const socials = [
+    {
+      image: insta,
+      href: "https://www.instagram.com/delpack_eg?igsh=MWRsc200MXhrMDByNA==",
+    },
+    {
+      image: facebook,
+      href: "https://www.facebook.com/share/1A7pC4UHZE/",
+    },
+    {
+      image: linkedIn,
+      href: "https://www.linkedin.com/in/delta-misr-for-plastic-a60277305/",
+    },
+  ];
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
@@ -34,9 +47,13 @@ const Location = () => {
         </div>
         <div className="w-full h-[50px] sm:h-[80px] md:h-[100px] lg:h-[169px] bg-socials flex justify-around items-center gap-3">
           {socials?.map((item, i) => (
-            <a href="##" className="flex justify-center items-center">
+            <a
+              href={item?.href}
+              target="blank"
+              className="flex justify-center items-center"
+            >
               <Image
-                src={item}
+                src={item?.image}
                 alt={`social ${i}`}
                 key={i}
                 className="w-5 h-5 md:w-full md:h-full"

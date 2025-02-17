@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Catalogue = () => {
   const t = useTranslations();
   return (
-    <div className="Catalogue py-[100px] sm:py-[200px] bg-white w-full relative">
+    <div className="Catalogue py-[40px] md:py-[60px] lg:py-[80px] xl:py-[100px] sm:py-[200px] bg-white w-full relative">
       <div className="container">
         {/* العنوان والوصف */}
         <div className="mainHeading flex flex-col justify-center items-center">
