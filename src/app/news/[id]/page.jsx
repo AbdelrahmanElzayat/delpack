@@ -5,6 +5,18 @@ import { fetchNewDetails } from "@/lib/api";
 import { cookies } from "next/headers";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const lang = cookies().get("lang")?.value || "en";
+  const { blog } = await fetchNewDetails({ lang, id: params.id });
+
+  return {
+    title:
+      lang === "en"
+        ? `DELPACK || ${blog?.New?.title || "new-details"}`
+        : `ديلباك || ${blog?.New?.title || "تفاصيل الخبر"}`,
+    description: "delta misr for plastic",
+  };
+}
 const Page = async ({ params }) => {
   const lang = cookies().get("lang")?.value || "en";
   const { blog } = await fetchNewDetails({ lang, id: params.id });

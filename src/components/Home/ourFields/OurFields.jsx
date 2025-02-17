@@ -34,7 +34,7 @@ const OurFields = ({ description, fields, slides }) => {
               {description}
             </p>
 
-            <div className="max-h-[300px] overflow-y-auto">
+            <div className="max-h-[200px] overflow-y-auto">
               <ul className="grid grid-cols-2 gap-x-4 text-[#656565] text-sm ms:text-lg lg:text-xl font-light list-disc list-inside">
                 {fields.map((field, index) => (
                   <li key={index}>{field}</li>

@@ -19,7 +19,6 @@ const SwipeFields = ({ slides }) => {
       initial={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
       whileInView={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
-      style={{ overflow: "hidden" }}
       transition={{ duration: 2 }}
       className="w-[calc(100%-80px)] max-h-[400px] flex justify-center items-center gap-4"
     >
