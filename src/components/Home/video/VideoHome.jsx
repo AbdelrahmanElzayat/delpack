@@ -65,22 +65,22 @@ const VideoHome = ({ media }) => {
           {/* فيديو البنر */}
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className="w-full h-full min-h-[500px] object-cover"
             src={media?.image}
             muted
             loop
             poster={videoBanner}
           ></video>
-
           {/* طبقة تظليل للفيديو */}
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <Image
-              src={videoBanner}
-              alt="Video Banner"
-              className="absolute inset-0 w-full h-full object-cover z-[-1]"
-            />
-          </div>
-
+          {!isPlaying && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <Image
+                src={videoBanner}
+                alt="Video Banner"
+                className="absolute inset-0 w-full h-full object-cover z-[-1]"
+              />
+            </div>
+          )}
           {/* زر التشغيل/الإيقاف */}
           <button
             onClick={handlePlayPause}
