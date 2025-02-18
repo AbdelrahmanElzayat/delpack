@@ -84,5 +84,6 @@
   "business_phone": "Business phone",
   "delete": "delete",
   "mm": "mm",
-  "ml": "ml"
+  "ml": "ml",
+  "cart_empty_error" : "your cart is empty!"
 }

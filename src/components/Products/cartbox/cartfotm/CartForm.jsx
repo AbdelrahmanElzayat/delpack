@@ -33,9 +33,15 @@ const CartForm = ({ productsIncart }) => {
   const [status, setStatus] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    console.log(1);
-    
     setStatus(null);
+
+    if (productsIncart.length === 0) {
+      toast.error(t("cart_empty_error")); // تأكد إن عندك الترجمة دي في i18n
+      setStatus({ type: "error", message: t("cart_empty_error") });
+      setSubmitting(false);
+      return;
+    }
+
     const payload = {
       customer_name: values.name,
       customer_phone: values.phone,
