@@ -65,7 +65,7 @@ const ProductSwiper = ({ products }) => {
           whileInView={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
           transition={{ duration: 2 }}
-          style={{ overflow: "hidden" }}
+          className="overflow-hidden"
         >
           <div className="productData flex flex-col gap-3 w-full mx-auto lg:mx-0">
             <h3 className="w-fit border-b-4 border-b-[#F7941D] text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-extrabold">
@@ -121,7 +121,7 @@ const ProductSwiper = ({ products }) => {
                 <SwiperSlide key={product.id}>
                   <Image
                     src={product.image}
-                    alt={product.title}
+                    alt={product.code}
                     width={500}
                     height={500}
                     className="max-w-[100px] max-h-[260px] object-contain"

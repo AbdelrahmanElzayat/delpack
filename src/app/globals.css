@@ -20,9 +20,42 @@ body {}
 }
 
 
+@font-face {
+    font-family: 'Stolzl';
+    src: url('/fonts/stolzl_regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Stolzl';
+    src: url('/fonts/stolzl_light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Stolzl';
+    src: url('/fonts/stolzl_medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Stolzl';
+    src: url('/fonts/stolzl_bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Apply the font globally */
+.font-en {
+    font-family: 'Stolzl', sans-serif !important;
+}
+/* 
 .font-en {
     font-family: 'Helvetica Neue LT W1G', sans-serif !important;
-}
+} */
 
 .font-ar {
     font-family: 'Cairo', sans-serif;
