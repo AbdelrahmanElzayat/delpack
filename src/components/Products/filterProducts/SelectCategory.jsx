@@ -45,7 +45,7 @@ const SelectCategory = ({ values, handleChange, categories }) => {
           slidesPerView={4}
           spaceBetween={10}
           breakpoints={{
-            250: { slidesPerView: 2 },
+            250: { slidesPerView: 1 },
             320: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
             768: { slidesPerView: 4 },
@@ -56,7 +56,7 @@ const SelectCategory = ({ values, handleChange, categories }) => {
           className="w-full"
           onSwiper={(swiper) => (swiperRef.current = swiper)} // ✅ تحديث `swiperRef`
         >
-          <SwiperSlide className="w-fit">
+          <SwiperSlide>
             <div className="flex items-center gap-2 text-white px-4 py-2">
               <input
                 type="checkbox"
@@ -66,7 +66,7 @@ const SelectCategory = ({ values, handleChange, categories }) => {
                 onChange={handleChange}
                 className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
               />
-              <label className="text-xs md:text-sm lg:text-base xl:text-lg font-light whitespace-nowrap uppercase">
+              <label className="text-xs md:text-sm lg:text-base xl:text-lg font-light uppercase">
                 {t("all")}
               </label>
             </div>
@@ -86,7 +86,7 @@ const SelectCategory = ({ values, handleChange, categories }) => {
                   className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
                   disabled={values.category.includes("0")}
                 />
-                <label className="text-xs md:text-sm lg:text-base xl:text-lg font-light whitespace-nowrap uppercase">
+                <label className="text-xs md:text-sm lg:text-base xl:text-lg font-light uppercase">
                   {category?.name}
                 </label>
               </div>
