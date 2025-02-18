@@ -10,7 +10,8 @@ export async function generateMetadata() {
   const lang = cookies().get("lang")?.value || "en";
 
   return {
-    title: lang === "en" ? "DELPACK || Our-Products" : "ديلباك || منتجاتنا",
+    title:
+      lang === "en" ? "DELPACK || Our-Products" : "دلبــــــــاك || منتجاتنا",
     description:
       lang === "en"
         ? "Delta Misr Plastic Factories Delpack manufactures plastic containers (coloured, transparent and opaque) for many consumer goods and industrial products"

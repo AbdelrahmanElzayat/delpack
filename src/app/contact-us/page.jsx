@@ -9,7 +9,8 @@ export async function generateMetadata() {
   const lang = cookies().get("lang")?.value || "en";
 
   return {
-    title: lang === "en" ? "DELPACK || contact-us" : "ديلباك || تواصل معنا",
+    title:
+      lang === "en" ? "DELPACK || contact-us" : "دلبــــــــاك || تواصل معنا",
     description:
       lang === "en"
         ? "Get in touch for inquiries, collaborations, or support"

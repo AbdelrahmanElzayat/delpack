@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     title:
       lang === "en"
         ? `DELPACK || ${blog?.New?.title || "new-details"}`
-        : `ديلباك || ${blog?.New?.title || "تفاصيل الخبر"}`,
+        : `دلبــــــــاك || ${blog?.New?.title || "تفاصيل الخبر"}`,
     description: "delta misr for plastic",
     keywords:
       lang === "en"
