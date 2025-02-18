@@ -15,6 +15,10 @@ export async function generateMetadata({ params }) {
         ? `DELPACK || ${blog?.New?.title || "new-details"}`
         : `ديلباك || ${blog?.New?.title || "تفاصيل الخبر"}`,
     description: "delta misr for plastic",
+    keywords:
+      lang === "en"
+        ? "plastic containers, transparent containers, plastic bottles, juice bottles, oil bottles, jars, plastics, cosmetics, bottle, olive oil, oil, creams, cylinders, easy open, cans, shampoo containers, juice containers, cream containers, packaging, packaging and wrapping"
+        : "عبوات بلاستيك, عبوات شفافه, زجاجات بلاستيك, زجاجات عصير, زجاجات زيت, برطمانات, بلاستيك, كوزمتكس, عبوه, زيت زيتون, زيت, كريمات, سلندرات, ايزي اوبن, كانز, عبوات شامبو, عبوات عصير, عبوات كريم, عبوات تعبئه, تعبئه وتغليف",
   };
 }
 const Page = async ({ params }) => {

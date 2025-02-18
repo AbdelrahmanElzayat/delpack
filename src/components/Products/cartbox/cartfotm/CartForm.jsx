@@ -33,6 +33,8 @@ const CartForm = ({ productsIncart }) => {
   const [status, setStatus] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    console.log(1);
+    
     setStatus(null);
     const payload = {
       customer_name: values.name,
@@ -91,7 +93,7 @@ const CartForm = ({ productsIncart }) => {
               { name: "email", placeholder: t("email"), icon: emailIcon },
               { name: "phone", placeholder: t("phone"), icon: phoneIcon },
               {
-                name: t("whatsapp"),
+                name: "whatsapp",
                 placeholder: t("whatsapp"),
                 icon: whatsappIcon,
               },

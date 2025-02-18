@@ -115,7 +115,7 @@ const ContactForm = () => {
                     className="bg-[#0076B1] px-6 md:px-8 lg:px-10 py-2 lg:py-3 pt-3 rounded-md text-lg sm:text-xl font-semibold text-white uppercase mt-4 disabled:opacity-50"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send"}
+                    {isSubmitting ? t("sending") : t("send")}
                   </button>
 
                   {status && (
