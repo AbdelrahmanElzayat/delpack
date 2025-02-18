@@ -6,6 +6,8 @@ import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
+import messageIcon from "@/assets/icons/message.svg";
+import Image from "next/image";
 export const metadata = {
   title: "DELPACK",
   description: "delta misr for plastic",
@@ -22,6 +24,11 @@ export default async function RootLayout({ children }) {
           locale === "en" ? "font-en" : "font-ar"
         }`}
       >
+        <div className="whatsapp-button">
+          <a href="https://wa.me/+201012248674" target="blank">
+            <Image src={messageIcon} alt="contact" />
+          </a>
+        </div>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
             <Toaster position="top-right" reverseOrder={false} />
