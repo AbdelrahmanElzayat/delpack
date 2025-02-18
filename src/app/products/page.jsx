@@ -13,8 +13,8 @@ export async function generateMetadata() {
     title: lang === "en" ? "DELPACK || Our-Products" : "ديلباك || منتجاتنا",
     description:
       lang === "en"
-        ? "Delta Misr Plastic Factories Delpak manufactures plastic containers (coloured, transparent and opaque) for many consumer goods and industrial products"
-        : "تقوم مصانع دلتا مصر للبلاستيك (Delpak) بتصنيع الحاويات البلاستيكية (الملونة، الشفافة والمعتمة) للعديد من السلع الاستهلاكية والمنتجات الصناعية",
+        ? "Delta Misr Plastic Factories Delpack manufactures plastic containers (coloured, transparent and opaque) for many consumer goods and industrial products"
+        : "تقوم مصانع دلتا مصر للبلاستيك (Delpack) بتصنيع الحاويات البلاستيكية (الملونة، الشفافة والمعتمة) للعديد من السلع الاستهلاكية والمنتجات الصناعية",
   };
 }
 const page = async ({ searchParams }) => {
