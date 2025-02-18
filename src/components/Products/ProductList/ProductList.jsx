@@ -14,7 +14,6 @@ const ProductList = ({ products, meta }) => {
 
   // استخراج الفلاتر من الـ URL
   const filters = Object.fromEntries(searchParams.entries());
-
   // تصفية المنتجات بناءً على الفلاتر
   const filteredProducts = products.filter((product) => {
     // تخطي فلتر الكاتيجوري لو كان 0
@@ -26,26 +25,38 @@ const ProductList = ({ products, meta }) => {
       return false;
     }
     if (
-      filters.code &&
-      !product.code.toLowerCase().includes(filters.code.toLowerCase())
+      filters.Code &&
+      !product.code.toLowerCase().includes(filters.Code.toLowerCase())
     ) {
       return false;
     }
-    if (filters.diameter && product.diameter.toString() !== filters.diameter) {
-      return false;
-    }
-    if (filters.height && product.height.toString() !== filters.height) {
-      return false;
-    }
-    if (filters.neck && product.neck.toString() !== filters.neck) {
-      return false;
-    }
-    if (filters.volume && product.volume.toString() !== filters.volume) {
+    if (
+      filters.Diameter &&
+      !product.diameter.toString().includes(filters.Diameter.toString())
+    ) {
       return false;
     }
     if (
-      filters.material &&
-      !product.material.toLowerCase().includes(filters.material.toLowerCase())
+      filters.Height &&
+      !product.height.toString().includes(filters.Height.toString())
+    ) {
+      return false;
+    }
+    if (
+      filters.Neck &&
+      !product.neck.toString().includes(filters.Neck.toString())
+    ) {
+      return false;
+    }
+    if (
+      filters.Volume &&
+      !product.volume.toString().includes(filters.Volume.toString())
+    ) {
+      return false;
+    }
+    if (
+      filters.Material &&
+      !product.material.toLowerCase().includes(filters.Material.toLowerCase())
     ) {
       return false;
     }

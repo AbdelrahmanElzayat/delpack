@@ -56,6 +56,8 @@ const FilterProducts = ({ categories }) => {
     router.push(`?${params.toString()}`);
   };
 
+  console.log(filters);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
