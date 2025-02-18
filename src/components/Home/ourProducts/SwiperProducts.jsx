@@ -28,6 +28,7 @@ const ProductSwiper = ({ products }) => {
         whileInView={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
         transition={{ duration: 2 }}
+        style={{ overflow: "hidden" }}
         className="leftSide relative mb-8 lg:mb-0 w-full md:w-auto md:basis-1/2 overflow-hidden"
       >
         <div className="activeProductImg">
@@ -64,6 +65,7 @@ const ProductSwiper = ({ products }) => {
           whileInView={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
           transition={{ duration: 2 }}
+          style={{ overflow: "hidden" }}
         >
           <div className="productData flex flex-col gap-3 w-full mx-auto lg:mx-0">
             <h3 className="w-fit border-b-4 border-b-[#F7941D] text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-4xl font-extrabold">
