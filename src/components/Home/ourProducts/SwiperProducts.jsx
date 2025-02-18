@@ -142,3 +142,125 @@ const ProductSwiper = ({ products }) => {
 };
 
 export default ProductSwiper;
+
+// "use client";
+
+// import React, { useRef, useState } from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { EffectCoverflow, Navigation } from "swiper";
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/navigation";
+// import Image from "next/image";
+// import rightProduct from "@/assets/icons/rightProduct.svg";
+// import leftProduct from "@/assets/icons/leftProduct.svg";
+// import { motion } from "framer-motion";
+// import { useTranslations } from "next-intl";
+// import Cookies from "js-cookie";
+
+// const ProductSwiper = ({ products }) => {
+//   const swiperRef = useRef(null);
+//   const [activeIndex, setActiveIndex] = useState(0);
+//   const t = useTranslations();
+//   const lang = Cookies.get("lang");
+
+//   return (
+//     <div className="products relative z-50 bg-products-gradient py-4 md:py-6 lg:py-8 xl:py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center justify-center">
+//       {/* قسم السلايدر باستخدام تأثير الـ Coverflow */}
+//       <div className="w-full lg:w-1/2 relative">
+//         <Swiper
+//           effect="coverflow"
+//           grabCursor={true}
+//           centeredSlides={false} // لن يكون في المنتصف؛ الشريحة النشطة على اليسار
+//           slidesPerView={3}
+//           spaceBetween={20}
+//           initialSlide={0}
+//           coverflowEffect={{
+//             rotate: 0,
+//             stretch: 80, // تعديل هذه القيمة لنقل الشريحة النشطة أكثر لليسار
+//             depth: 150,
+//             modifier: 1,
+//             slideShadows: false,
+//           }}
+//           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+//           onSwiper={(swiper) => (swiperRef.current = swiper)}
+//           navigation={{
+//             nextEl: ".swiper-button-next",
+//             prevEl: ".swiper-button-prev",
+//           }}
+//           modules={[EffectCoverflow, Navigation]}
+//           className="mySwiper"
+//         >
+//           {products?.map((product, index) => (
+//             <SwiperSlide key={product.id}>
+//               <motion.div
+//                 initial={{ opacity: 0, x: lang === "en" ? -100 : 100 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ duration: 0.5 }}
+//               >
+//                 <Image
+//                   src={product.image}
+//                   alt={product.title}
+//                   width={500}
+//                   height={500}
+//                   className={`object-contain ${
+//                     activeIndex === index
+//                       ? "max-w-[350px] lg:max-w-[450px] h-[50vh] lg:h-[90vh]"
+//                       : "max-w-[150px] lg:max-w-[200px] h-[30vh] lg:h-[50vh]"
+//                   }`}
+//                 />
+//               </motion.div>
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+//         {/* أزرار التنقل */}
+//         <button
+//           className="swiper-button-prev absolute left-3 top-1/2 transform -translate-y-1/2 z-10"
+//           onClick={() => swiperRef.current?.slidePrev()}
+//         >
+//           <Image src={leftProduct} alt="prev" />
+//         </button>
+//         <button
+//           className="swiper-button-next absolute right-3 top-1/2 transform -translate-y-1/2 z-10"
+//           onClick={() => swiperRef.current?.slideNext()}
+//         >
+//           <Image src={rightProduct} alt="next" />
+//         </button>
+//       </div>
+
+//       {/* بيانات المنتج النشط */}
+//       <div className="w-full lg:w-1/2 mt-8 lg:mt-0 flex flex-col justify-center gap-8 text-center lg:text-left">
+//         <motion.div
+//           initial={{ opacity: 0, x: lang === "en" ? 100 : -100 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 0.8 }}
+//         >
+//           <div className="productData flex flex-col gap-3">
+//             <h3 className="w-fit border-b-4 border-b-[#F7941D] text-white text-2xl font-extrabold">
+//               {t("code")} {products[activeIndex]?.code}
+//             </h3>
+//             <ul className="flex flex-col items-start text-white font-light text-lg">
+//               <li>
+//                 {t("diameter")}: {products[activeIndex]?.diameter} {t("mm")}
+//               </li>
+//               <li>
+//                 {t("height")}: {products[activeIndex]?.height} {t("mm")}
+//               </li>
+//               <li>
+//                 {t("neck")}: {products[activeIndex]?.neck} {t("mm")}
+//               </li>
+//               <li>
+//                 {t("volume")}: {products[activeIndex]?.volume} {t("ml")}
+//               </li>
+//               <li>
+//                 {t("material")}: {products[activeIndex]?.material}
+//               </li>
+//             </ul>
+//           </div>
+//         </motion.div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProductSwiper;
