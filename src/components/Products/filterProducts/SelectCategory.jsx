@@ -37,25 +37,24 @@ const SelectCategory = ({ values, handleChange, categories }) => {
 
       <div className="relative w-[75%]">
         {/* زر السهم الأيسر */}
-        <button
-          className="absolute -left-10 top-1/2 -translate-y-1/2  z-10"
-          onClick={() => swiperRef.current?.slidePrev()}
-        >
+        <button className="prev-button absolute -left-10 top-1/2 -translate-y-1/2 z-10">
           <Image src={left} alt="left" />
         </button>
 
         <Swiper
-          ref={swiperRef}
           slidesPerView={4}
           spaceBetween={10}
           breakpoints={{
+            250: { slidesPerView: 1 },
+            320: { slidesPerView: 1 },
             640: { slidesPerView: 3 },
             768: { slidesPerView: 4 },
             1024: { slidesPerView: 5 },
           }}
           modules={[Navigation]}
+          navigation={{ prevEl: ".prev-button", nextEl: ".next-button" }} // ✅ تفعيل أزرار التنقل
           className="w-full"
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSwiper={(swiper) => (swiperRef.current = swiper)} // ✅ تحديث `swiperRef`
         >
           <SwiperSlide className="w-fit">
             <div className="flex items-center gap-2 text-white px-4 py-2">
@@ -96,11 +95,8 @@ const SelectCategory = ({ values, handleChange, categories }) => {
         </Swiper>
 
         {/* زر السهم الأيمن */}
-        <button
-          className="absolute -right-10 top-1/2 -translate-y-1/2  z-10"
-          onClick={() => swiperRef.current?.slideNext()}
-        >
-          <Image src={right} alt="left" />
+        <button className="next-button absolute -right-10 top-1/2 -translate-y-1/2 z-10">
+          <Image src={right} alt="right" />
         </button>
       </div>
     </motion.div>
