@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import logo from "@/assets/images/logofooter.png";
-import insta from "@/assets/icons/insta.svg";
-import facebook from "@/assets/icons/facebook.svg";
+import insta from "@/assets/icons/instaSocial.svg";
+import facebook from "@/assets/icons/faceSocial.svg";
+import youtube from "@/assets/icons/youtubesocial.svg";
+import tiktok from "@/assets/icons/tiktoksocial.svg";
+import linkedin from "@/assets/icons/linkedinsocial.svg";
 // import twitter from "@/assets/icons/twitter.svg";
-// import youtube from "@/assets/icons/youtube.svg";
 import { getTranslations } from "next-intl/server";
 
 const Footer = async () => {
@@ -24,11 +26,60 @@ const Footer = async () => {
               {t("company_description")}
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/delpack_eg?igsh=MWRsc200MXhrMDByNA==">
-                <Image src={insta} alt="Instagram" />
+              <a
+                target="blank"
+                href="https://www.instagram.com/delpack_eg?igsh=MWRsc200MXhrMDByNA=="
+                className="md:w-10 md:h-10 w-9 h-9 bg-[#007AB9] rounded-full p-2 shrink-0 flex items-center justify-center"
+              >
+                <Image
+                  src={insta}
+                  alt="Instagram"
+                  className="max-w-full max-h-full"
+                />
               </a>
-              <a href="https://www.facebook.com/share/1A7pC4UHZE/">
-                <Image src={facebook} alt="Facebook" />
+              <a
+                target="blank"
+                href="https://www.facebook.com/share/1A7pC4UHZE/"
+                className="md:w-10 md:h-10 w-9 h-9 bg-[#3B5998] rounded-full p-2 shrink-0 flex items-center justify-center"
+              >
+                <Image
+                  src={facebook}
+                  alt="Facebook"
+                  className="max-w-full max-h-full"
+                />
+              </a>
+              <a
+                target="blank"
+                href="##"
+                className="md:w-10 md:h-10 w-9 h-9 bg-[#DD4B39] rounded-full p-2 shrink-0 flex items-center justify-center"
+              >
+                <Image
+                  src={youtube}
+                  alt="YouTube"
+                  className="max-w-full max-h-full"
+                />
+              </a>
+              <a
+                target="blank"
+                href="##"
+                className="md:w-10 md:h-10 w-9 h-9 bg-black rounded-full p-2 shrink-0"
+              >
+                <Image
+                  src={tiktok}
+                  alt="YouTube"
+                  className="max-w-full max-h-full"
+                />
+              </a>
+              <a
+                target="blank"
+                href="##"
+                className="md:w-10 md:h-10 w-9 h-9 bg-blue-700 rounded-full p-2 shrink-0"
+              >
+                <Image
+                  src={linkedin}
+                  alt="linkedin"
+                  className="max-w-full max-h-full"
+                />
               </a>
               {/* <Image src={twitter} alt="Twitter" />
               <Image src={youtube} alt="YouTube" /> */}
