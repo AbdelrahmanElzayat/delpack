@@ -15,7 +15,7 @@ const CartItems = ({ cart, data }) => {
       transition={{ duration: 1 }}
       className="rounded-3xl w-full bg-[#4E5864] px-2 sm:px-4 md:px-8 lg:px-16 py-12"
     >
-      <div className="cartitems w-full min-h-[500px] overflow-x-auto flex flex-col gap-6 max-h-[500px]">
+      <div className="cartitems w-full min-h-[250px] md:min-h-[300px] lg:min-h-[400px] xl:min-h-[500px] overflow-x-auto flex flex-col gap-6 max-h-[500px]">
         {cart && cart?.length ? (
           cart?.map((item, i) => (
             <ProductInCart key={item?.id + i} product={item} data={data} />

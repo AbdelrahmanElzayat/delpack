@@ -76,7 +76,7 @@ const ProductList = ({ products, meta }) => {
               meta.current_page === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            <Image src={lang === "en" ? left : right} alt="previous page" />
+            <Image src={lang === "ar" ? right : left} alt="previous page" />
           </button>
 
           <span className="bg-[#D9D9D9] px-3 flex items-center justify-center font-mono">
@@ -90,7 +90,7 @@ const ProductList = ({ products, meta }) => {
               !meta.more ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            <Image src={lang === "en" ? right : left} alt="next page" />
+            <Image src={lang === "ar" ? left : right} alt="next page" />
           </button>
         </div>
       </div>
