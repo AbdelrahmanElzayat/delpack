@@ -1,10 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-lt-w1g');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {}
 
 .heading {
     background: linear-gradient(90deg, #F7941D 0%, #046AAF 100%);
@@ -19,7 +18,7 @@ body {}
     width: 100%;
 }
 
-
+/* 
 @font-face {
     font-family: 'Stolzl';
     src: url('./fonts/stolzl_regular.otf') format('opentype');
@@ -46,11 +45,11 @@ body {}
     src: url('./fonts/stolzl_bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
-}
+} */
 
 /* Apply the font globally */
 .font-en {
-    font-family: 'Stolzl', sans-serif;
+    font-family: "Inter", serif;
 }
 
 /* 
@@ -75,4 +74,19 @@ body {}
 .whatsapp-button a {
     color: #ef4444;
     /* Text color for the link */
+}
+
+
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }

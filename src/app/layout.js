@@ -8,6 +8,7 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import messageIcon from "@/assets/icons/message.svg";
 import Image from "next/image";
+import SplashScreen from "@/components/SplashScreen";
 export const metadata = {
   title: "DELPACK",
   description: "delta misr for plastic",
@@ -33,7 +34,9 @@ export default async function RootLayout({ children }) {
           <ReduxProvider>
             <Toaster position="top-right" reverseOrder={false} />
             <Header />
-            <main>{children}</main>
+            <SplashScreen>
+              <main>{children}</main>
+            </SplashScreen>
             <Footer />
           </ReduxProvider>
         </NextIntlClientProvider>
