@@ -210,21 +210,26 @@ const cartSlice = createSlice({
         0
       );
     },
-    decreaseItem: (state, action) => {
+    decreseItem: (state, action) => {
       const { id, color } = action.payload;
       const existingItem = state.cartItems.find(
-        (item) => item.id === id && item.color === color
+        (item) => item.id === id && item?.color === color
       );
 
-      if (existingItem) {
+      if (existingItem && existingItem.quantity > 1) {
         existingItem.quantity--;
         state.totalQuantity--;
-        if (existingItem.quantity <= 0) {
-          state.cartItems = state.cartItems.filter(
-            (item) => item.id !== id || item.color !== color
-          );
-        }
       }
+
+      // if (existingItem) {
+      //   existingItem.quantity--;
+      //   state.totalQuantity--;
+      //   if (existingItem.quantity <= 0) {
+      //     state.cartItems = state.cartItems.filter(
+      //       (item) => item.id !== id || item.color !== color
+      //     );
+      //   }
+      // }
     },
     increaseItem: (state, action) => {
       const { id, color } = action.payload;
