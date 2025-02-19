@@ -60,9 +60,9 @@ const SelectCategory = ({ values, handleChange, categories }) => {
             <div className="flex items-center gap-2 text-white px-4 py-2">
               <input
                 type="checkbox"
-                name="category"
+                name="categories"
                 value={0}
-                checked={values.category.includes("0")}
+                checked={values.categories.includes("0")}
                 onChange={handleChange}
                 className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
               />
@@ -76,15 +76,15 @@ const SelectCategory = ({ values, handleChange, categories }) => {
               <div className="flex items-center gap-2 text-white px-4 py-2">
                 <input
                   type="checkbox"
-                  name="category"
+                  name="categories"
                   value={category?.id}
                   checked={
-                    values.category.includes(category?.id.toString()) &&
-                    !values.category.includes("0")
+                    values.categories.includes(category?.id.toString()) &&
+                    !values.categories.includes("0")
                   }
                   onChange={handleChange}
                   className="w-4 h-4 mb-2 accent-[#F7941D] shrink-0"
-                  disabled={values.category.includes("0")}
+                  disabled={values.categories.includes("0")}
                 />
                 <label className="text-xs md:text-sm lg:text-base xl:text-lg font-light uppercase">
                   {category?.name}

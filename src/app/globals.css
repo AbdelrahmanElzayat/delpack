@@ -50,7 +50,7 @@ body {}
 
 /* Apply the font globally */
 .font-en {
-    font-family: 'Stolzl', sans-serif !important;
+    font-family: 'Stolzl', sans-serif;
 }
 
 /* 

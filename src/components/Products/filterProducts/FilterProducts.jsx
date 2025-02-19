@@ -12,6 +12,7 @@ const FilterProducts = ({ categories }) => {
   // استخراج الفلاتر الحالية من الـ URL
   const getFiltersFromURL = () => {
     const params = new URLSearchParams(searchParams.toString());
+
     return {
       code: params.get("code") || "",
       diameter: params.get("diameter") || "",
@@ -19,33 +20,68 @@ const FilterProducts = ({ categories }) => {
       neck: params.get("neck") || "",
       volume: params.get("volume") || "",
       material: params.get("material") || "",
-      category: params.getAll("category") || [],
+      categories: params.getAll("categories") || [],
     };
   };
 
   const [filters, setFilters] = useState(getFiltersFromURL());
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    // إنشاء نسخة من الـ searchParams الحالي
     const params = new URLSearchParams(searchParams.toString());
 
+    // نسخ الكائن الحالي للفلاتر
     let updatedFilters = { ...filters };
 
     if (type === "checkbox") {
-      updatedFilters.category = checked
-        ? [...filters.category, value]
-        : filters.category.filter((cat) => cat !== value);
+      if (value === "0") {
+        // لو المستخدم اختار "الكل"، نخلي قيمة الفئات ["0"]
+        updatedFilters.categories = checked ? ["0"] : [];
+      } else {
+        // لو المستخدم اختار فئة معينة:
+        // - لو بيختارها، نضيفها (وبنحذف "0" لو كانت موجودة)
+        // - لو بيلغي التحديد، بنشيلها من المصفوفة
+        updatedFilters.categories = checked
+          ? [...updatedFilters.categories.filter((cat) => cat !== "0"), value]
+          : updatedFilters.categories.filter((cat) => cat !== value);
+      }
     } else {
       updatedFilters[name] = value;
     }
 
+    // تحديث حالة الفلاتر في الـ state
     setFilters(updatedFilters);
 
-    // تحديث الـ URL مع الاحتفاظ بالـ page إن وجد
-    Object.entries(updatedFilters).forEach(([key, val]) => {
-      if (Array.isArray(val) && val.length > 0) {
+    // أولاً: نحذف كل المفاتيح في URL المتعلقة بالفئات
+    for (const key of Array.from(params.keys())) {
+      if (key.startsWith("categories[")) {
         params.delete(key);
-        val.forEach((item) => params.append(key, item));
+      }
+    }
+
+    // بعدين: لو في قيم في updatedFilters.categories
+    if (Array.isArray(updatedFilters.categories)) {
+      // لو المصفوفة مش فاضية وما تحتويش على "0"
+      if (
+        updatedFilters.categories.length > 0 &&
+        !updatedFilters.categories.includes("0")
+      ) {
+        updatedFilters.categories.forEach((item, index) => {
+          // نضيف كل عنصر مع مفتاح بصيغة categories[index]
+          params.append(`categories[${index}]`, item);
+        });
+      }
+      // ولو المصفوفة فاضية أو تحتوي على "0"، ما بنضيفش حاجة للفئات في الـ URL
+    }
+
+    // نتعامل مع باقي الفلاتر (غير الفئات)
+    Object.entries(updatedFilters).forEach(([key, val]) => {
+      if (key === "categories") return; // تجاهل الفئات لأنها تمت معالجتها
+      if (Array.isArray(val)) {
+        params.delete(key);
+        if (val.length > 0) {
+          val.forEach((item) => params.append(key, item));
+        }
       } else if (val) {
         params.set(key, val);
       } else {
@@ -53,10 +89,9 @@ const FilterProducts = ({ categories }) => {
       }
     });
 
+    // تحديث الـ URL
     router.push(`?${params.toString()}`);
   };
-
-  console.log(filters);
 
   return (
     <motion.div

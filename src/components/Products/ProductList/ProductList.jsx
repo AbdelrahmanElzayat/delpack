@@ -13,56 +13,56 @@ const ProductList = ({ products, meta }) => {
   const currentPage = Number(searchParams.get("page")) || 1;
 
   // استخراج الفلاتر من الـ URL
-  const filters = Object.fromEntries(searchParams.entries());
+  // const filters = Object.fromEntries(searchParams.entries());
   // تصفية المنتجات بناءً على الفلاتر
-  const filteredProducts = products.filter((product) => {
-    // تخطي فلتر الكاتيجوري لو كان 0
-    if (
-      filters.category &&
-      filters.category !== "0" &&
-      !filters.category.split(",").includes(product.category.id.toString())
-    ) {
-      return false;
-    }
-    if (
-      filters.Code &&
-      !product.code.toLowerCase().includes(filters.Code.toLowerCase())
-    ) {
-      return false;
-    }
-    if (
-      filters.Diameter &&
-      !product.diameter.toString().includes(filters.Diameter.toString())
-    ) {
-      return false;
-    }
-    if (
-      filters.Height &&
-      !product.height.toString().includes(filters.Height.toString())
-    ) {
-      return false;
-    }
-    if (
-      filters.Neck &&
-      !product.neck.toString().includes(filters.Neck.toString())
-    ) {
-      return false;
-    }
-    if (
-      filters.Volume &&
-      !product.volume.toString().includes(filters.Volume.toString())
-    ) {
-      return false;
-    }
-    if (
-      filters.Material &&
-      !product.material.toLowerCase().includes(filters.Material.toLowerCase())
-    ) {
-      return false;
-    }
+  // const filteredProducts = products.filter((product) => {
+  //   // تخطي فلتر الكاتيجوري لو كان 0
+  //   if (
+  //     filters.category &&
+  //     filters.category !== "0" &&
+  //     !filters.category.split(",").includes(product.category.id.toString())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Code &&
+  //     !product.code.toLowerCase().includes(filters.Code.toLowerCase())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Diameter &&
+  //     !product.diameter.toString().includes(filters.Diameter.toString())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Height &&
+  //     !product.height.toString().includes(filters.Height.toString())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Neck &&
+  //     !product.neck.toString().includes(filters.Neck.toString())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Volume &&
+  //     !product.volume.toString().includes(filters.Volume.toString())
+  //   ) {
+  //     return false;
+  //   }
+  //   if (
+  //     filters.Material &&
+  //     !product.material.toLowerCase().includes(filters.Material.toLowerCase())
+  //   ) {
+  //     return false;
+  //   }
 
-    return true;
-  });
+  //   return true;
+  // });
 
   const handlePageChange = (newPage) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -74,7 +74,7 @@ const ProductList = ({ products, meta }) => {
     <div className="pb-[50px] md:pb-[100px] lg:pb-[150px] xl:pb-[200px]">
       <div className="container">
         <div className="grid grid-cols-2 lg:grid-cols-3 pb-16 md:pb-10 lg:pb-20 xl:pb-40 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-20">
-          {filteredProducts.map((product) => (
+          {products?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

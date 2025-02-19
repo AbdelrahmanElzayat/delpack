@@ -1,19 +1,58 @@
-export const fetchProducts = async (page) => {
+export async function fetchProducts(searchParams) {
+  const query = new URLSearchParams(searchParams).toString();
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/products?page=${page}`,
-    {
-      cache: "no-store", // عشان يكون Server-side
-    }
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/products?${query}`
   );
 
-  if (!res.ok) throw new Error("Failed to fetch products");
+  let errorMessage = "Failed to fetch products";
+
+  if (!res.ok) {
+    try {
+      const errorData = await res.json(); // محاولة قراءة الخطأ من السيرفر
+
+      if (errorData?.data && errorData?.data?.length === 0) {
+        return {
+          products: [],
+          meta: {
+            current_page: 1,
+            last_page: 1,
+            per_page: 10,
+            total: 0,
+            more: false,
+          },
+        };
+      }
+      errorMessage = errorData?.message || errorMessage;
+      console.error("Server Error:", errorData); // طباعة كامل الخطأ
+    } catch (error) {
+      console.error("Error parsing server response:", error);
+    }
+    throw new Error(errorMessage);
+  }
 
   const data = await res.json();
   return {
     products: data.data.products,
     meta: data.data.meta,
   };
-};
+}
+
+// export const fetchProducts = async (page) => {
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/products?page=${page}`,
+//     {
+//       cache: "no-store", // عشان يكون Server-side
+//     }
+//   );
+
+//   if (!res.ok) throw new Error("Failed to fetch products");
+
+//   const data = await res.json();
+//   return {
+//     products: data.data.products,
+//     meta: data.data.meta,
+//   };
+// };
 export const fetchCategories = async (lang = "en") => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/categories`,
@@ -26,7 +65,7 @@ export const fetchCategories = async (lang = "en") => {
     }
   );
 
-  if (!res.ok) throw new Error("Failed to fetch products");
+  if (!res.ok) throw new Error("Failed to fetch categories");
 
   const data = await res.json();
   return {

@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
     <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
       <body
         className={`overflow-x-hidden ${
-          locale === "en" ? "font-en" : "font-ar"
+          locale === "ar" ? "font-ar" : "font-en"
         }`}
       >
         <div className="whatsapp-button">

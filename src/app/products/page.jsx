@@ -23,9 +23,13 @@ export async function generateMetadata() {
   };
 }
 const page = async ({ searchParams }) => {
+  
+  // const query = new URLSearchParams(searchParams).toString();
+  // const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
+  // const { products, meta } = await fetchProducts(currentPage);
+  
   const lang = cookies().get("lang")?.value || "en";
-  const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
-  const { products, meta } = await fetchProducts(currentPage);
+  const { products, meta } = await fetchProducts(searchParams);
   const { categories } = await fetchCategories(lang);
   return (
     <div className="bg-products overflow-hidden">

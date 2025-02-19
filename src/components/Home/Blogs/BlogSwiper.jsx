@@ -145,26 +145,28 @@ const BlogSwiper = ({ news }) => {
       transition={{ duration: 2 }}
       className="py-10 relative mx-4 md:mx-0"
     >
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        breakpoints={{
-          640: { slidesPerView: 1.2 },
-        }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
-        modules={[Pagination, Autoplay]}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-      >
-        {news.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="w-full flex justify-center">
-              <BlogCard title={item.title} image={item.image} id={item?.id} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="container">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+          }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          modules={[Pagination, Autoplay]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        >
+          {news.map((item) => (
+            <SwiperSlide key={item.id} className="w-[70%]">
+              <div className="w-full flex justify-center">
+                <BlogCard title={item.title} image={item.image} id={item?.id} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
       {/* Custom Box */}
       <div className="absolute bottom-[0px] left-1/2 transform -translate-x-1/2 z-50 w-[200px] lg:w-[300px] sm:w-[420px] h-[80px] sm:h-[100px] bg-gradient-to-r from-gray-300 to-gray-500/70 rounded-full shadow-lg p-1">

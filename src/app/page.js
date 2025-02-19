@@ -8,6 +8,7 @@ import Hero from "@/components/Home/Hero/Hero";
 import MapSection from "@/components/Home/mapSection/MapSection";
 import OurFields from "@/components/Home/ourFields/OurFields";
 import OurProductHeading from "@/components/Home/ourProducts/OurProductHeading";
+import ProductsSlider from "@/components/Home/ourProducts/productsSlider/ProductsSlider";
 import SwiperProducts from "@/components/Home/ourProducts/SwiperProducts";
 import VideoHome from "@/components/Home/video/VideoHome";
 import WeHere from "@/components/Home/wehere/WeHere";
@@ -48,6 +49,8 @@ export default async function Home() {
       <Hero banners={banners} />
       <OurProductHeading />
       <SwiperProducts products={products} />
+
+      {/* <ProductsSlider /> */}
       <AboutUs description={about?.about?.title} />
       <OurFields
         description={about?.about?.our_field}

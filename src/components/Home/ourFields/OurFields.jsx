@@ -10,7 +10,7 @@ const OurFields = ({ description, fields, slides }) => {
   const lang = Cookies.get("lang");
   const t = useTranslations();
   return (
-    <div className="py-6 md:py-8 lg:py-12" style={{ overflow: "hidden" }}>
+    <div className="py-6 md:py-8 lg:py-12 overflow-hidden">
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
           {/* Swiper Section */}
@@ -24,8 +24,7 @@ const OurFields = ({ description, fields, slides }) => {
             whileInView={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: lang === "ar" ? -100 : 100 }}
             transition={{ duration: 2 }}
-            style={{ overflow: "hidden" }}
-            className="fieldsContent basis-1/2 flex flex-col mt-3 md:mt-0 gap-3 md:gap-6"
+            className="fieldsContent basis-1/2 flex flex-col mt-3 md:mt-0 gap-3 md:gap-6 overflow-hidden"
           >
             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-[#0A6BAB]">
               {t("our_fields")}

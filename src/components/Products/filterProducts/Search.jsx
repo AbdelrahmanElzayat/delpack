@@ -39,17 +39,21 @@ const Search = ({ values, handleChange }) => {
           t("material"),
         ].map((name) => (
           <div key={name} className="flex flex-col gap-1 sm:gap-2">
-            <label className="text-sm text-textMain font-[500]" htmlFor={name}>
-              {name.charAt(0).toUpperCase() + name.slice(1)}
+            <label
+              className="text-sm text-textMain font-[500] capitalize"
+              htmlFor={name.toLowerCase()}
+            >
+              {/* {name.charAt(0).toUpperCase() + name.slice(1)} */}
+              {name}
             </label>
             <input
-              name={name}
+              name={name.toLowerCase()}
               type="text"
-              placeholder={`${t("type")} ${name}`}
+              placeholder={`${t("type")} ${name.toLowerCase()}`}
               className="rounded-[5px] py-2 px-3 bg-[rgba(40,56,65,0.06)] 
                   placeholder:text-xs placeholder:text-[#283841] placeholder:opacity-50 
                   font-[500] text-sm w-full"
-              value={values[name]}
+              value={values[name.toLowerCase()]}
               onChange={handleChange}
             />
           </div>
