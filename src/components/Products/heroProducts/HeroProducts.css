@@ -16,3 +16,21 @@
     height: 100%;
     background: rgba(58, 53, 53, 0.38);
 }
+
+@media(max-width:994px) {
+    .heroProducts {
+        min-height: 60vh;
+    }
+}
+
+@media(max-width:767px) {
+    .heroProducts {
+        min-height: 50vh;
+    }
+}
+
+@media(max-width:480px) {
+    .heroProducts {
+        min-height: 40vh;
+    }
+}
