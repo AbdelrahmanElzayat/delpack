@@ -42,7 +42,7 @@ const Hero = ({ banners }) => {
         dir="ltr"
       >
         {banners?.map((slide) => (
-          <SwiperSlide key={slide?.id} className="h-full relative">
+          <SwiperSlide key={slide?.id} className="h-full w-full relative">
             {slide.type === "image" ? (
               <div className="relative w-full h-full">
                 <Image
