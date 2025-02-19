@@ -109,7 +109,9 @@ const Faqs = () => {
                 onClick={() => setOpen(faq.id)}
                 className={`relative faqCard flex-grow bg-[#E7E7E7] rounded-lg flex ${
                   open === faq.id ? "flex-row" : "flex-col"
-                } justify-center items-center flex-wrap lg:flex-nowrap gap-4 px-6 pt-6 pb-0 cursor-pointer transition-all overflow-hidden`}
+                } justify-center items-center flex-wrap lg:flex-nowrap gap-4 px-6 pt-6 ${
+                  open === faq.id ? "pb-4" : "pb-0"
+                } cursor-pointer transition-all overflow-hidden`}
                 style={{
                   display: open && open !== faq.id ? "none" : "flex",
                   width: open !== faq.id ? "100%" : "fit-content",
@@ -141,7 +143,7 @@ const Faqs = () => {
                     <Image
                       src={faq?.icon}
                       alt={faq?.title}
-                      className="max-w-[65px] md:max-w-[100px] lg:max-w-[150px] lg:w-full"
+                      className="max-w-[65px] md:max-w-[100px] lg:max-w-[150px]"
                     />
                   </motion.div>
                   <span
