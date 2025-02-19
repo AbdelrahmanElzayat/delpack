@@ -9,7 +9,7 @@ export default function SplashScreen({ children }) {
     // تغيير الحالة بعد 3 ثواني، يمكنك تعديل المدة حسب الحاجة
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 700);
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
 
