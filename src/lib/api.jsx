@@ -8,8 +8,7 @@ export async function fetchProducts(searchParams) {
 
   if (!res.ok) {
     try {
-      const errorData = await res.json(); // محاولة قراءة الخطأ من السيرفر
-
+      const errorData = await res.json(); // محاولة قراءة الخطأ من السيرفر      
       if (errorData?.data && errorData?.data?.length === 0) {
         return {
           products: [],
@@ -57,7 +56,7 @@ export const fetchCategories = async (lang = "en") => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/categories`,
     {
-      cache: "no-store", // عشان يكون Server-side
+      // cache: "no-store", // عشان يكون Server-side
       headers: {
         "Content-Type": "application/json",
         lang: lang, // إرسال اللغة في الهيدرز
@@ -75,12 +74,13 @@ export const fetchCategories = async (lang = "en") => {
 export const fetchBanners = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/banners`,
-    {
-      cache: "no-store", // عشان يكون Server-side
-    }
+    // {
+    //   cache: "no-store", // عشان يكون Server-side
+    // }
   );
 
-  if (!res.ok) throw new Error("Failed to fetch Banners");
+  if (!res.ok) console.log(res);
+  ;
 
   const data = await res.json();
   return {
@@ -90,9 +90,9 @@ export const fetchBanners = async () => {
 export const fetchHomeMedia = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/home/media`,
-    {
-      cache: "no-store", // عشان يكون Server-side
-    }
+    // {
+    //   cache: "no-store", // عشان يكون Server-side
+    // }
   );
 
   if (!res.ok) throw new Error("Failed to fetch media");
@@ -106,7 +106,7 @@ export const fetchAbout = async (lang = "en") => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/about-us`,
     {
-      cache: "no-store", // لضمان تحديث البيانات
+      // cache: "no-store", // لضمان تحديث البيانات
       headers: {
         "Content-Type": "application/json",
         lang: lang, // إرسال اللغة في الهيدرز
@@ -123,7 +123,7 @@ export const fetchAbout = async (lang = "en") => {
 };
 export const fetchNews = async (lang = "en") => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/news`, {
-    cache: "no-store", // لضمان تحديث البيانات
+    // cache: "no-store", // لضمان تحديث البيانات
     headers: {
       "Content-Type": "application/json",
       lang: lang, // إرسال اللغة في الهيدرز
@@ -141,7 +141,7 @@ export const fetchNewDetails = async ({ lang = "en", id }) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/new/${id}`,
     {
-      cache: "no-store", // 🛠 تحديث البيانات دائماً
+      // cache: "no-store", // 🛠 تحديث البيانات دائماً
       headers: {
         "Content-Type": "application/json",
         lang, // 🛠 تصحيح إرسال اللغة
