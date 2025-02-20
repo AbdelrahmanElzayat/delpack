@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
           <span className="text-white font-light text-xs sm:text-sm">
             {t("color")}
           </span>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center sm:gap-2 md:gap-3">
             {product?.colors?.map((c, i) => (
               <div
                 key={i}
