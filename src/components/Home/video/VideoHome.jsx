@@ -92,9 +92,17 @@ const VideoHome = ({ media }) => {
             aria-label={isPlaying ? "Pause Video" : "Play Video"}
           >
             {isPlaying ? (
-              <Image src={videoStop} alt="Pause Video" />
+              <Image
+                src={videoStop}
+                alt="Pause Video"
+                className="xl:w-[177px] xl:h-[177px] lg:w-[150px] lg:h-[150px] md:w-[120px] md:h-[120px] sm:w-[100px] sm:h-[100px] w-[80px] h-[80px]"
+              />
             ) : (
-              <Image src={videoPlay} alt="Play Video" />
+              <Image
+                src={videoPlay}
+                alt="Play Video"
+                className="xl:w-[177px] xl:h-[177px] lg:w-[150px] lg:h-[150px] md:w-[120px] md:h-[120px] sm:w-[100px] sm:h-[100px] w-[80px] h-[80px]"
+              />
             )}
           </button>
         </>
