@@ -1,25 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import imgGif from "@/assets/images/firstGif.gif";
+import { useState } from "react";
+import splash from "@/assets/images/splash.mp4";
+
 export default function SplashScreen({ children }) {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // تغيير الحالة بعد 3 ثواني، يمكنك تعديل المدة حسب الحاجة
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 900);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="splash-screen">
-        <Image src={imgGif} alt="Loading..." width={500} height={500} />
-      </div>
-    );
-  }
-
-  return <>{children}</>;
+  return loading ? (
+    <div className="splash-screen">
+      <video
+        src={splash}
+        autoPlay
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+        onEnded={() => setLoading(false)} // يتغير لما الفيديو يخلص
+      />
+    </div>
+  ) : (
+    <>{children}</>
+  );
 }
