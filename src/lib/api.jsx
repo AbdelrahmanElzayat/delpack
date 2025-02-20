@@ -4,12 +4,10 @@ export async function fetchProducts(searchParams) {
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/products?${query}`
   );
 
-  let errorMessage = "Failed to fetch products";
-
   if (!res.ok) {
     try {
-      const errorData = await res.json(); // محاولة قراءة الخطأ من السيرفر      
-      if (errorData?.data && errorData?.data?.length === 0) {
+      const errorData = await res.json();
+      if (errorData?.data && errorData.data.length === 0) {
         return {
           products: [],
           meta: {
@@ -21,15 +19,16 @@ export async function fetchProducts(searchParams) {
           },
         };
       }
-      errorMessage = errorData?.message || errorMessage;
-      console.error("Server Error:", errorData); // طباعة كامل الخطأ
+      const errorMessage = errorData?.message || "Failed to fetch products";
+      console.error("Server Error:", errorData);
+      throw new Error(errorMessage);
     } catch (error) {
       console.error("Error parsing server response:", error);
+      throw new Error("Failed to fetch products");
     }
-    throw new Error(errorMessage);
   }
 
-  const data = await res.json();
+  const data = await res.json(); // هنا يتم قراءة الجسم مرة واحدة فقط
   return {
     products: data.data.products,
     meta: data.data.meta,
@@ -73,15 +72,13 @@ export const fetchCategories = async (lang = "en") => {
 };
 export const fetchBanners = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/banners`,
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/banners`
     // {
     //   cache: "no-store", // عشان يكون Server-side
     // }
   );
 
   if (!res.ok) console.log(res);
-  ;
-
   const data = await res.json();
   return {
     banners: data.data,
@@ -89,7 +86,7 @@ export const fetchBanners = async () => {
 };
 export const fetchHomeMedia = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/home/media`,
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/home/media`
     // {
     //   cache: "no-store", // عشان يكون Server-side
     // }

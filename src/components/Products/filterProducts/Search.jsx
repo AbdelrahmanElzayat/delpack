@@ -31,29 +31,29 @@ const Search = ({ values, handleChange }) => {
           ${isOpen ? "block" : "hidden"} sm:grid`}
       >
         {[
-          t("code"),
-          t("diameter"),
-          t("height"),
-          t("neck"),
-          t("volume"),
-          t("material"),
-        ].map((name) => (
-          <div key={name} className="flex flex-col gap-1 sm:gap-2">
+          { name: "code", label: t("code") },
+          { name: "diameter", label: t("diameter") },
+          { name: "height", label: t("height") },
+          { name: "neck", label: t("neck") },
+          { name: "volume", label: t("volume") },
+          { name: "material", label: t("material") },
+        ].map((item) => (
+          <div key={item?.name} className="flex flex-col gap-1 sm:gap-2">
             <label
               className="text-sm text-textMain font-[500] capitalize"
-              htmlFor={name.toLowerCase()}
+              htmlFor={item?.name.toLowerCase()}
             >
               {/* {name.charAt(0).toUpperCase() + name.slice(1)} */}
-              {name}
+              {item?.label}
             </label>
             <input
-              name={name.toLowerCase()}
+              name={item?.name.toLowerCase()}
               type="text"
-              placeholder={`${t("type")} ${name.toLowerCase()}`}
+              placeholder={`${t("type")} ${item?.label.toLowerCase()}`}
               className="rounded-[5px] py-2 px-3 bg-[rgba(40,56,65,0.06)] 
                   placeholder:text-xs placeholder:text-[#283841] placeholder:opacity-50 
                   font-[500] text-sm w-full"
-              value={values[name.toLowerCase()]}
+              value={values[item?.name.toLowerCase()]}
               onChange={handleChange}
             />
           </div>
